@@ -38,7 +38,7 @@ public class CaveGenerator : MonoBehaviour
 			for (int y = 0; y < ySize; y++) {
 				// Edges are always walls
 				if (x == 0 || y == 0 || x == xSize-1 || y == ySize-1)
-					heightmap[x, y] = 1;
+					heightmap[x, y] = 0;
 				else if (UnityEngine.Random.value > wallChance)
 					heightmap[x, y] = 1;
 				else
@@ -46,16 +46,36 @@ public class CaveGenerator : MonoBehaviour
 			}
 		}
 		
-		for (int i = 0; i < iterations; i++) {
-			int x = random.Next(0, xSize);
-			int y = random.Next(0, ySize);
+		// Build an array of pairs
+		Tuple<int,int>[] pairs = new Tuple<int,int>[xSize * ySize];
+		for (int x = 0; x < xSize; x++) {
+			for (int y = 0; y < ySize; y++) {
+				pairs[x*ySize + y] = new Tuple<int,int>(x, y);
+			}
+		}
+
+		// Randomise the array
+		for (int i = 0; i < pairs.Length; i++) {
+			Tuple<int, int> tmp = pairs[i];
+			int randomIndex = UnityEngine.Random.Range(i, pairs.Length);
+			pairs[i] = pairs[randomIndex];
+			pairs[randomIndex] = tmp;
+		}
+
+		
+		for (int i = 0; i < pairs.Length; i++) {
+
+			int x = pairs[i].Item1;
+			int y = pairs[i].Item2;
+			//int x = random.Next(0, xSize);
+			//int y = random.Next(0, ySize);
 			if (getVonNeumannNeighbourCount(x, y, vonNeumannN) > wallThreshold) {
 				heightmap[x, y] = invert ? 0 : 1;				
 			}
 			else heightmap[x, y] = invert ? 1 : 0;
 		}
 
-		for (int i = 0; i < 1; i++) {
+		for (int i = 0; i < 10; i++) {
 			for (int x = 0; x < xSize; x++) {
 				for (int y = 0; y < ySize; y++) {
 					if (getMooreNeighbourCount(x, y) > 4) {
@@ -65,6 +85,8 @@ public class CaveGenerator : MonoBehaviour
 				}
 			}
 		}
+		MeshGenerator mG = GetComponent<MeshGenerator>();
+		mG.generateMesh(heightmap, 1);
 	}
 
 	// Gets the number of walls in the Moore neighbourhood
