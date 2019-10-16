@@ -45,6 +45,9 @@ public class MeshGenerator : MonoBehaviour
 		mesh.RecalculateNormals();
 
 		generateWallMesh();
+
+		FloorGenerator fG = GetComponent<FloorGenerator>();
+		fG.generateFloor(squareSize * map.GetLength(0), squareSize * map.GetLength(1));
 	}
 
 	void generateWallMesh() {

@@ -23,6 +23,7 @@ public class CaveGenerator : MonoBehaviour
 	void Start() {
 		random = new System.Random();
 		generateCave();
+
 	}
 
 	void Update() {
