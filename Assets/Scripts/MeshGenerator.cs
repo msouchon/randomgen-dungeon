@@ -126,8 +126,8 @@ public class MeshGenerator : MonoBehaviour
 			CornerNode[,] cornerNodes = new CornerNode[mapX, mapZ];
 			for (int x = 0; x < mapX; x++) {
 				for (int z = 0; z < mapZ; z++) {
-					float xPos = x * squareSize;
-					float zPos = z * squareSize;
+					float xPos = -(mapX * squareSize) / 2 + x * squareSize;
+					float zPos = -(mapZ * squareSize) / 2 + z * squareSize;
 					// Set the state of the corner node to be true if there is a wall on the map
 					cornerNodes[x, z] = new CornerNode(new Vector3(xPos, 0, zPos), map[x, z] == 1, squareSize);
 				}
