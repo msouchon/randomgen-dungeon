@@ -307,6 +307,7 @@ GameObject:
   - component: {fileID: 1993068324}
   - component: {fileID: 1993068326}
   - component: {fileID: 1993068325}
+  - component: {fileID: 1993068327}
   m_Layer: 0
   m_Name: CaveGenerator
   m_TagString: Untagged
@@ -410,6 +411,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1993068321}
   m_Mesh: {fileID: 0}
+--- !u!114 &1993068327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993068321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02190df2a7c1fec44a1317b045c3b23e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floorXVertices: 10
+  floorZVertices: 10
+  floorMaterial: {fileID: 2100000, guid: 6a4fd6f5218d7a04a904ff1a3613a40f, type: 2}
 --- !u!1 &2118463766
 GameObject:
   m_ObjectHideFlags: 0

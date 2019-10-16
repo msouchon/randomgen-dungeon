@@ -23,7 +23,7 @@ public class MeshGenerator : MonoBehaviour
 		checkedVertIndex.Clear();
 		wallVertPaths.Clear();
 
-		sGrid = new SquareGrid(map, squareSize);
+		sGrid = new SquareGrid(map, squareSize, wallSize);
 
 		int gridX = sGrid.grid.GetLength(0);
 		int gridY = sGrid.grid.GetLength(1);
@@ -45,6 +45,9 @@ public class MeshGenerator : MonoBehaviour
 		mesh.RecalculateNormals();
 
 		generateWallMesh();
+
+		FloorGenerator fG = GetComponent<FloorGenerator>();
+		fG.generateFloor(squareSize * map.GetLength(0), squareSize * map.GetLength(1));
 	}
 
 	void generateWallMesh() {
@@ -248,7 +251,7 @@ public class MeshGenerator : MonoBehaviour
 	public class SquareGrid {
 		public Square[,] grid;
 
-		public SquareGrid(int[,] map, float squareSize) {
+		public SquareGrid(int[,] map, float squareSize, int wallSize) {
 			int mapX = map.GetLength(0);
 			int mapZ = map.GetLength(1);
 
@@ -259,7 +262,7 @@ public class MeshGenerator : MonoBehaviour
 					float xPos = -(mapX * squareSize) / 2 + x * squareSize;
 					float zPos = -(mapZ * squareSize) / 2 + z * squareSize;
 					// Set the state of the corner node to be true if there is a wall on the map
-					cornerNodes[x, z] = new CornerNode(new Vector3(xPos, 0, zPos), map[x, z] == 1, squareSize);
+					cornerNodes[x, z] = new CornerNode(new Vector3(xPos, wallSize, zPos), map[x, z] == 1, squareSize);
 				}
 			}
 			// Build the squares onto the grid
