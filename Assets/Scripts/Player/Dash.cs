@@ -18,7 +18,7 @@ public class Dash : MonoBehaviour
 	}
 
 	void Update() {
-		if (Input.GetKeyDown("space")) {
+		if (Input.GetKeyDown("left shift")) {
 			tr.emitting = true;
 			currentTrailTime = trailTime;
 			rb.velocity = Vector3.zero;
