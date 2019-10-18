@@ -20,7 +20,7 @@ public class Dash : MonoBehaviour
 	}
 
 	void Update() {
-		if (Input.GetKeyDown("left shift")) {
+		if (Input.GetKeyDown("left shift") && !panel.activeSelf) {
 			tr.emitting = true;
 			currentTrailTime = trailTime;
 			rb.velocity = Vector3.zero;
