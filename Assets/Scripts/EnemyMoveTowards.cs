@@ -9,6 +9,7 @@ public class EnemyMoveTowards : MonoBehaviour
     public float speed;
     public GameObject player;
 
+    public float EPS;
     public float MAX_DIST;
     public float MIN_DIST;
 
@@ -24,10 +25,10 @@ public class EnemyMoveTowards : MonoBehaviour
         float distance = Vector3.Distance(transform.position, player.transform.position);
 
         if (distance < MIN_DIST){
-            rb.MovePosition(Vector3.MoveTowards(transform.position, player.transform.position, -speed));
+            rb.MovePosition(Vector3.MoveTowards(transform.position, player.transform.position, -speed*Time.deltaTime));
         }
-        else if (distance < MAX_DIST){
-            rb.MovePosition(Vector3.MoveTowards(transform.position, player.transform.position, speed));
+        else if (distance < MAX_DIST && distance > MIN_DIST + EPS){
+            rb.MovePosition(Vector3.MoveTowards(transform.position, player.transform.position, speed*Time.deltaTime));
         }
         transform.LookAt(player.transform);
     }

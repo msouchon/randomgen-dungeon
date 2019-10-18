@@ -55,12 +55,12 @@ public class EnemyWander : MonoBehaviour
 
         }
         if (state % 2 == 1){
-            rb.MovePosition(Vector3.MoveTowards(transform.position, targetPoint, speed));
+            rb.MovePosition(Vector3.MoveTowards(transform.position, targetPoint, speed*Time.deltaTime));
         }
         else{
             Timer += Time.deltaTime; // doubles speed of timer counter
             Vector3 targetDir = targetPoint - transform.position;
-            rb.MoveRotation(Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, targetDir, speed/2, 0.0f)));
+            rb.MoveRotation(Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, targetDir, speed*Time.deltaTime/2, 0.0f)));
         }
         
 

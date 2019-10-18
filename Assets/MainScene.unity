@@ -153,12 +153,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cee1f639e6489614f83394b7619ffaeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.04
+  speed: 0.5
   point1: {x: 1, y: 0, z: 1}
   point2: {x: 5, y: 3, z: 3}
   point3: {x: 4, y: 0, z: 1}
   point4: {x: -1, y: 0, z: -1}
-  WALK_TIME: 7
+  WALK_TIME: 8
   state: 0
 --- !u!65 &421824816
 BoxCollider:
@@ -180,7 +180,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 421824814}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -373,8 +373,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d37ab648f8b55e4abe46d7d0d9afe2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.07
+  speed: 1
   player: {fileID: 1985801817}
+  EPS: 0.1
   MAX_DIST: 40
   MIN_DIST: 18
 --- !u!54 &759922980
@@ -918,6 +919,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3902355392739611242, guid: 192ffab96e85fa441927558ca401401a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8713232526875897414, guid: 192ffab96e85fa441927558ca401401a,
         type: 3}

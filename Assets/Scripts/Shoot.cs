@@ -16,7 +16,6 @@ public class Shoot : MonoBehaviour
     }
     private void ShootBullet(){
         GameObject a = Instantiate(bullet) as GameObject;
-        // a.transform.parent = transform;
         a.transform.position = transform.position;
         a.transform.forward = transform.forward;
     }
