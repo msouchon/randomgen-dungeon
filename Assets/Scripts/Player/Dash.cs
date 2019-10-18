@@ -11,6 +11,8 @@ public class Dash : MonoBehaviour
 	private TrailRenderer tr;
 	private Rigidbody rb;
 
+	public GameObject panel;
+
 	void Start() {
 		rb = GetComponent<Rigidbody>();
 		tr = GetComponent<TrailRenderer>();
@@ -18,12 +20,13 @@ public class Dash : MonoBehaviour
 	}
 
 	void Update() {
-		if (Input.GetKeyDown("left shift")) {
+		if (Input.GetKeyDown("left shift") && !panel.activeSelf) {
 			tr.emitting = true;
 			currentTrailTime = trailTime;
 			rb.velocity = Vector3.zero;
 			rb.AddForce(transform.right * dashForce, ForceMode.VelocityChange);
 			GetComponent<Movement>().enableMovement = false;
+			panel.SetActive(true);
 		}
 		if (currentTrailTime <= 0) {
 			tr.emitting = false;
