@@ -15,7 +15,6 @@ public class BulletController : MonoBehaviour
 			Destroy(this.gameObject);
 			if (other.gameObject.GetComponent<Health>() != null) {
 				other.gameObject.GetComponent<Health>().ApplyDamage(50);
-				Debug.Log(other.gameObject.GetComponent<Health>().currentHealth);
 			}
 		}
 	}

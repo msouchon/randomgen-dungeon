@@ -23,7 +23,7 @@ public class Movement : MonoBehaviour
 
 		Vector3 position = c.WorldToScreenPoint(transform.position);
 		Vector3 direction = Input.mousePosition - position;
-		float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-		transform.rotation = Quaternion.AngleAxis(angle, Vector3.down);
+		float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+		transform.rotation = Quaternion.AngleAxis(angle, Vector3.up);
 	}
 }
