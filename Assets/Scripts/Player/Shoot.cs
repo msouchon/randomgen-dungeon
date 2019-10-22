@@ -6,6 +6,7 @@ public class Shoot : MonoBehaviour
 {
 	public GameObject bullet;
 	public float bulletSpeed = 20;
+	public float duration = 4.0f;
 
 	private Rigidbody rb;
 
@@ -17,7 +18,9 @@ public class Shoot : MonoBehaviour
 		if (Input.GetKeyDown("space")) {
 			GameObject b = Instantiate(bullet);
 			b.transform.position = transform.position;
-			b.GetComponent<BulletController>().velocity = transform.forward * bulletSpeed;
+			b.GetComponent<BulletController>().direction = transform.forward;
+			b.GetComponent<BulletController>().speed = bulletSpeed;
+			Destroy(b, duration);
 		}
 	}
 
