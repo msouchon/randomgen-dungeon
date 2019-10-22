@@ -24,7 +24,7 @@ public class Dash : MonoBehaviour
 			tr.emitting = true;
 			currentTrailTime = trailTime;
 			rb.velocity = Vector3.zero;
-			rb.AddForce(transform.right * dashForce, ForceMode.VelocityChange);
+			rb.AddForce(transform.forward * dashForce, ForceMode.VelocityChange);
 			GetComponent<Movement>().enableMovement = false;
 			panel.SetActive(true);
 		}
