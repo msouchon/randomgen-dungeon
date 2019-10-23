@@ -16,10 +16,13 @@ public class Behaviour : MonoBehaviour
 	}
 
 	void Update() {
+		int layerMask = (1 << 8);
 		float distance = Vector3.Distance(transform.position, player.transform.position);
 		if (distance <= awarenessRange) {
-			transform.LookAt(player.transform);
-			rb.MovePosition(Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime));
+			if (!Physics.Linecast(transform.position, player.transform.position, layerMask)) {
+				transform.LookAt(player.transform.position);
+				rb.MovePosition(Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime));
+			}
 		}
 	}
 }
