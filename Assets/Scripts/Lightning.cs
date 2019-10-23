@@ -6,10 +6,10 @@ public class Lightning : MonoBehaviour
 {
 	public GameObject target;
 
-	public float distThreshold = 3.0f;
-	public float accuracy = 0.5f;
-	public float arcLength = 1f;
-	public float arcVariation = 1f;
+	[Range(0.1f, 10)] public float distThreshold = 3.0f;
+	[Range(0.1f, 10)] public float arcLength = 1f;
+	[Range(0.1f, 10)] public float arcVariation = 1f;
+	[Range(0.1f, 10)] public float delay = 0.1f;
 
 	private LineRenderer lr;
 
@@ -38,7 +38,7 @@ public class Lightning : MonoBehaviour
 		}
 		lr.SetVertexCount(currVert + 1);
 		lr.SetPosition(currVert, target.transform.position);
-		yield return new WaitForSeconds(.1f);
+		yield return new WaitForSeconds(delay);
 		}
 	}
 }
