@@ -374,6 +374,10 @@ MonoBehaviour:
   bullet: {fileID: 6921108819090345711, guid: 9cd5153c8713d3a43b07d9c3e4c1f1c9, type: 3}
   bulletSpeed: 20
   duration: 4
+  lightningBullet: {fileID: 5484442340612900248, guid: 7059163d0c2668d4aa4d8366986a4434,
+    type: 3}
+  lightningBulletSpeed: 10
+  lightningDuration: 3
 --- !u!1 &2836812691975820905
 GameObject:
   m_ObjectHideFlags: 0
