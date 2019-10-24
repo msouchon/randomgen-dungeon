@@ -139,3 +139,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 100
   currentHealth: 0
+  hitMaterial: {fileID: 2100000, guid: 0c2bdd620858d8c469c69b82a8b8a08c, type: 2}

@@ -522,6 +522,11 @@ PrefabInstance:
       propertyPath: panel
       value: 
       objectReference: {fileID: 1450616049}
+    - target: {fileID: 7640187643390970503, guid: 750eb5a0c54e9fb4396943dbedaa6e24,
+        type: 3}
+      propertyPath: lightningBulletSpeed
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 750eb5a0c54e9fb4396943dbedaa6e24, type: 3}
 --- !u!1001 &1333547597

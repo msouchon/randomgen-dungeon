@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 6076574355518580037}
   - component: {fileID: 7056383366978261197}
   - component: {fileID: 6913575061472738089}
-  - component: {fileID: 1354615193288052679}
   - component: {fileID: 5999660821807799479}
+  - component: {fileID: 4022564188671317316}
   - component: {fileID: 9150130863372668589}
   - component: {fileID: 6372819378438253387}
   - component: {fileID: 70695763224039205}
@@ -33,7 +33,7 @@ Transform:
   m_GameObject: {fileID: 5484442340612900248}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.682868, y: 0.17819582, z: 6.32714}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -96,20 +96,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1354615193288052679
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5484442340612900248}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 611a7cae6a0e6d14ba7f1d05a8424849, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  direction: {x: 0, y: 0, z: 0}
-  speed: 0
 --- !u!54 &5999660821807799479
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -126,6 +112,21 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 126
   m_CollisionDetection: 2
+--- !u!114 &4022564188671317316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5484442340612900248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d12f791c8d4d7645ada41bc5518fae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: {x: 0, y: 0, z: 0}
+  speed: 0
+  radius: 1.4
 --- !u!114 &9150130863372668589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,9 +139,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3096c30fa12cc145bfa39fd683d8555, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxBolts: 4
+  maxBolts: 10
   radius: 10
   delay: 0.1
+  damage: 10
   targets: []
 --- !u!96 &6372819378438253387
 TrailRenderer:

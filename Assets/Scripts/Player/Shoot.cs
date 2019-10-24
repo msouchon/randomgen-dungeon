@@ -29,8 +29,8 @@ public class Shoot : MonoBehaviour
 		if (Input.GetKeyDown("1")) {
 			GameObject b = Instantiate(lightningBullet);
 			b.transform.position = transform.position;
-			b.GetComponent<BulletController>().direction = transform.forward;
-			b.GetComponent<BulletController>().speed = lightningBulletSpeed;
+			b.GetComponent<LightningBulletController>().direction = transform.forward;
+			b.GetComponent<LightningBulletController>().speed = lightningBulletSpeed;
 			Destroy(b, lightningDuration);
 		}
 	}
