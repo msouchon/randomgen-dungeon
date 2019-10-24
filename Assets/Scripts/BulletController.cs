@@ -14,7 +14,7 @@ public class BulletController : MonoBehaviour
 	}
 
 	void Update() {
-		this.transform.Translate(direction * Time.deltaTime * speed);
+		rb.MovePosition(rb.transform.position + direction * Time.deltaTime * speed);
 	}
 
 	void OnTriggerEnter(Collider other) {
@@ -22,9 +22,14 @@ public class BulletController : MonoBehaviour
 			if (other.gameObject.GetComponent<Health>() != null) {
 				other.gameObject.GetComponent<Health>().ApplyDamage(50);
 			}
-			RaycastHit hit;
-			Physics.Raycast(transform.position, direction, out hit);
-			direction = Vector3.Reflect(direction, hit.normal);
+			if (other.gameObject.tag == "Wall") {
+				RaycastHit hit;
+				Physics.Raycast(transform.position, direction, out hit);
+				direction = Vector3.Reflect(direction, hit.normal);
+			}
+			else if (other.gameObject.tag != "Bullet") {
+				Destroy(this.gameObject);
+			}
 		}
 	}
 
