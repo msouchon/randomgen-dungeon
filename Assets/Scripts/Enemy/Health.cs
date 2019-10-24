@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-	public int startingHealth = 100;
+	public float startingHealth = 100;
 
-	public int currentHealth;
+	public float currentHealth;
 
 	void Start() {
 		currentHealth = startingHealth;
 	}
 
-	public void ApplyDamage(int damage) {
+	public void ApplyDamage(float damage) {
 		currentHealth -= damage;
 		if (currentHealth <= 0)
 			Destroy(this.gameObject);
