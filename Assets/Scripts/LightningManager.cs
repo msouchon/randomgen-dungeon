@@ -7,6 +7,7 @@ public class LightningManager : MonoBehaviour
 	public int maxBolts = 4;
 	public float radius = 3f;
 	public float delay = 0.1f;
+	public float damage = 10f;
 
 	public List<GameObject> targets = new List<GameObject>();
 	
@@ -42,9 +43,16 @@ public class LightningManager : MonoBehaviour
 					}
 				}
 			}
+			targets.RemoveAll(target => target == null);
 			for (int i = 0; i < targets.Count; i++) {
 				if (Vector3.Distance(transform.position, targets[i].transform.position) > radius) {
 					targets[i] = null;
+				}
+			}
+			targets.RemoveAll(target => target == null);
+			foreach (GameObject target in targets) {
+				if (target.GetComponent<Health>() != null) {
+					target.GetComponent<Health>().ApplyDamage(damage);
 				}
 			}
 			targets.RemoveAll(target => target == null);
