@@ -657,8 +657,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b18c9e7cceae75b4e8ff146e6e370d86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSize: 300
-  ySize: 300
+  xSize: 200
+  ySize: 200
+  borderSize: 30
   seed: 
   randomSeed: 0
   wallChance: 0.524
