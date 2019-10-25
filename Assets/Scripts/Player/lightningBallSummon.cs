@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class lightningBallSummon : MonoBehaviour
+public class lightningBallSummon : MonoBehaviour, ISpell
 {
     public GameObject lightningBall;
     public int flashes = 3;
@@ -17,12 +17,14 @@ public class lightningBallSummon : MonoBehaviour
     void Start()
     {
     }
-    void Update()
+    public void doAction()
     {
-        if (Input.GetKeyDown(keyInput))
-        {
-            StartCoroutine(Summon());
-        }
+	    GameObject icon = GameObject.Find("LightningBallIcon(Clone)");
+	    if (icon && !icon.transform.GetChild(0).gameObject.activeSelf) {
+		    icon.transform.GetChild(0).gameObject.SetActive(true);
+
+		    StartCoroutine(Summon());
+	    }
     }
 
     IEnumerator Summon()
