@@ -8,7 +8,8 @@ public class Spells : MonoBehaviour
     {
         DASH,
         SHOOT,
-        SHOOTLIGHTNING
+        SHOOTLIGHTNING,
+	LIGHTNINGBALL
     }
 
     [System.Serializable]
@@ -41,6 +42,9 @@ public class Spells : MonoBehaviour
                 case SpellsEnum.DASH:
                     spell.script = this.GetComponent<Dash>();
                     break;
+		case SpellsEnum.LIGHTNINGBALL:
+		    spell.script = this.GetComponent<lightningBallSummon>();
+		    break;
             }
             spellDict.Add(spell.spell, spell);
         }
