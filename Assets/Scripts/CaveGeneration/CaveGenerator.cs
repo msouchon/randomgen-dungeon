@@ -7,6 +7,7 @@ public class CaveGenerator : MonoBehaviour
 {
 	public int xSize;
 	public int ySize;
+	public int borderSize = 1;
 
 	public string seed;
 	public bool randomSeed;
@@ -28,6 +29,36 @@ public class CaveGenerator : MonoBehaviour
 
 	void Update() {
 		if (Input.GetButtonDown("Fire1")) generateCave();
+	}
+
+	void clearPosition(int xPos, int yPos, int width) {
+		if (width % 2 != 0) width++;
+		int a, b;
+
+		for (int x = xPos - width / 2; x < xPos + width / 2; x++) {
+			for (int y = yPos - width / 2; y < yPos + width / 2; y++) {
+				a = xPos - x;
+				b = yPos - y;
+				if (a*a + b*b <= width/2*width/2) {
+					heightmap[x, y] = 0;
+				}
+			}
+		}
+	}
+
+	int[,] borderize(int borderSize, int[,] heightmap) {
+		int[,] newHeightmap = new int[xSize + 2*borderSize, ySize + 2*borderSize];
+		for (int x = 0; x < xSize + 2*borderSize; x++) {
+			for (int y = 0; y < ySize + 2*borderSize; y++) {
+				if (x < borderSize || x >= xSize + borderSize || y < borderSize || y >= ySize + borderSize) {
+					newHeightmap[x, y] = 1;
+				}
+				else {
+					newHeightmap[x, y] = heightmap[x-borderSize, y-borderSize];
+				}
+			}
+		}
+		return newHeightmap;
 	}
 
 	// Generates a cave using a cellular automaton
@@ -87,6 +118,8 @@ public class CaveGenerator : MonoBehaviour
 			}
 		}
 		MeshGenerator mG = GetComponent<MeshGenerator>();
+		clearPosition(xSize/2, ySize/2, 40);
+		heightmap = borderize(borderSize, heightmap);
 		mG.generateMesh(heightmap, 1);
 	}
 
