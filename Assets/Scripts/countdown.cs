@@ -34,6 +34,7 @@ public class countdown : MonoBehaviour
         {
             TimeLeft = cooldown;
             this.transform.parent.gameObject.SetActive(false);
+            GetComponent<Text>().text = TimeLeft.ToString();
         }
     }
 }

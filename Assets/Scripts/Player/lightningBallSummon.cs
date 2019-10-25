@@ -4,34 +4,39 @@ using UnityEngine;
 
 public class lightningBallSummon : MonoBehaviour
 {
-	public GameObject lightningBall;
-	public int flashes = 3;
-	public float flashInterval = 1.0f;
-	public float flashDuration = 0.2f;
-	public Material flashMaterial;
-	public string keyInput = "2";
-	
-	private MeshRenderer mr;
-	private Material m;
+    public GameObject lightningBall;
+    public int flashes = 3;
+    public float flashInterval = 1.0f;
+    public float flashDuration = 0.2f;
+    public Material flashMaterial;
+    public string keyInput = "9";
 
-	void Start() {
-	}
-	void Update() {
-		if (Input.GetKeyDown(keyInput)) {
-			StartCoroutine(Summon());
-		}
-	}
+    private MeshRenderer mr;
+    private Material m;
 
-	IEnumerator Summon() {
-		GameObject g = Instantiate(lightningBall, this.gameObject.transform);
-		mr = g.GetComponent<MeshRenderer>();
-		m = mr.material;
-		for (int i = 0; i < flashes; i++) {
-			yield return new WaitForSeconds(flashInterval);
-			mr.material = flashMaterial;
-			yield return new WaitForSeconds(flashDuration);
-			mr.material = m;
-		}
-		Destroy(g);
-	}
+    void Start()
+    {
+    }
+    void Update()
+    {
+        if (Input.GetKeyDown(keyInput))
+        {
+            StartCoroutine(Summon());
+        }
+    }
+
+    IEnumerator Summon()
+    {
+        GameObject g = Instantiate(lightningBall, this.gameObject.transform);
+        mr = g.GetComponent<MeshRenderer>();
+        m = mr.material;
+        for (int i = 0; i < flashes; i++)
+        {
+            yield return new WaitForSeconds(flashInterval);
+            mr.material = flashMaterial;
+            yield return new WaitForSeconds(flashDuration);
+            mr.material = m;
+        }
+        Destroy(g);
+    }
 }
