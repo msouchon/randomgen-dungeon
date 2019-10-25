@@ -20,16 +20,20 @@ public class countdown : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
- 
-        if (time >= interpolationPeriod) {
+
+        if (time >= interpolationPeriod)
+        {
             time = time - interpolationPeriod;
             TimeLeft -= 1;
-            if(TimeLeft == 0) {
-                TimeLeft = cooldown;
-                this.transform.parent.gameObject.SetActive(false);
-            }
+
             GetComponent<Text>().text = TimeLeft.ToString();
             // execute block of code here
+        }
+
+        if (TimeLeft <= 0)
+        {
+            TimeLeft = cooldown;
+            this.transform.parent.gameObject.SetActive(false);
         }
     }
 }

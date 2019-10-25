@@ -2,37 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shoot : MonoBehaviour
+public class Shoot : MonoBehaviour, ISpell
 {
-	public GameObject bullet;
-	public float bulletSpeed = 20;
-	public float duration = 4.0f;
+    public GameObject bullet;
+    public float bulletSpeed = 20;
+    public float duration = 4.0f;
 
-	public GameObject lightningBullet;
-	public float lightningBulletSpeed = 10;
-	public float lightningDuration = 3.0f;
+    private Rigidbody rb;
 
-	private Rigidbody rb;
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
-	void Start() {
-		rb = GetComponent<Rigidbody>();
-	}
+    void Update()
+    {
 
-	void Update() {
-		if (Input.GetKeyDown("space")) {
-			GameObject b = Instantiate(bullet);
-			b.transform.position = transform.position;
-			b.GetComponent<BulletController>().direction = transform.forward;
-			b.GetComponent<BulletController>().speed = bulletSpeed;
-			Destroy(b, duration);
-		}
-		if (Input.GetKeyDown("1")) {
-			GameObject b = Instantiate(lightningBullet);
-			b.transform.position = transform.position;
-			b.GetComponent<LightningBulletController>().direction = transform.forward;
-			b.GetComponent<LightningBulletController>().speed = lightningBulletSpeed;
-			Destroy(b, lightningDuration);
-		}
-	}
+    }
+
+    public void doAction()
+    {
+        GameObject icon = GameObject.Find("ShootIcon(Clone)");
+        if (icon && !icon.transform.GetChild(0).gameObject.activeSelf)
+        {
+            icon.transform.GetChild(0).gameObject.SetActive(true);
+
+            GameObject b = Instantiate(bullet);
+            b.transform.position = transform.position;
+            b.GetComponent<BulletController>().direction = transform.forward;
+            b.GetComponent<BulletController>().speed = bulletSpeed;
+            Destroy(b, duration);
+        }
+    }
 
 }
