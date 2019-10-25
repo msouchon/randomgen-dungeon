@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2836812690132466120}
   - component: {fileID: 2836812690132466121}
   - component: {fileID: 2836812690132466126}
+  - component: {fileID: 600192710510594077}
   - component: {fileID: 2836812690132466116}
   - component: {fileID: 2836812690132466119}
   m_Layer: 0
@@ -130,6 +131,25 @@ MonoBehaviour:
   maxScreenMovement: 0
   c: {fileID: 2836812691975820906}
   enableMovement: 1
+--- !u!114 &600192710510594077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2836812690132466127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9869558bc4fe7c0449802c9619e5a997, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightningBall: {fileID: 3751490259160842133, guid: 789fa31e5b8dd7140bf15ec201b63c36,
+    type: 3}
+  flashes: 3
+  flashInterval: 0.5
+  flashDuration: 0.2
+  flashMaterial: {fileID: 2100000, guid: 01cc30e204f38cf4d8379581d89e2a91, type: 2}
+  keyInput: 2
 --- !u!114 &2836812690132466116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,13 +424,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2836812691975820905}
-  m_LocalRotation: {x: 0.39897206, y: -0, z: -0, w: 0.9169631}
-  m_LocalPosition: {x: 0, y: 19.510002, z: -21.88}
+  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: 0, y: 20, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2836812690309056772}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 47.028004, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!20 &2836812691975820906
 Camera:
   m_ObjectHideFlags: 0
