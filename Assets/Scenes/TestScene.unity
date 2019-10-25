@@ -342,6 +342,7 @@ MonoBehaviour:
   maxBolts: 4
   radius: 20
   delay: 0.1
+  damage: 10
   targets: []
 --- !u!120 &350712154
 LineRenderer:
