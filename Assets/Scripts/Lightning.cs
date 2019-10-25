@@ -33,10 +33,10 @@ public class Lightning : MonoBehaviour
 			lr.enabled = true;
 			int currVert = 1;
 			Vector3 currPos = transform.position;
-			lr.SetVertexCount(currVert);
+			lr.positionCount = currVert;
 			lr.SetPosition(0, currPos);
 			while (Vector3.Distance(currPos, target.transform.position) > distThreshold) {
-				lr.SetVertexCount(currVert + 1);
+				lr.positionCount++;
 				Vector3 dir = target.transform.position - currPos;
 				dir = dir.normalized;
 				dir += new Vector3(Random.value - 0.5f, Random.value - 0.5f, Random.value - 0.5f);
@@ -47,7 +47,7 @@ public class Lightning : MonoBehaviour
 				currVert++;
 				currPos = dir;
 			}
-			lr.SetVertexCount(currVert + 1);
+			lr.positionCount++;
 			lr.SetPosition(currVert, target.transform.position);
 			yield return new WaitForSeconds(delay);
 		}

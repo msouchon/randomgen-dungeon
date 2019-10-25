@@ -140,3 +140,6 @@ MonoBehaviour:
   startingHealth: 100
   currentHealth: 0
   hitMaterial: {fileID: 2100000, guid: 0c2bdd620858d8c469c69b82a8b8a08c, type: 2}
+  flashDuration: 0.1
+  explosion: {fileID: 7176969660554912443, guid: 71d0cedeed272804da43dad3344e2cff,
+    type: 3}
