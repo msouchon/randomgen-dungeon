@@ -247,3 +247,4 @@ MonoBehaviour:
   flashDuration: 0.1
   fallApart: {fileID: 7176969660554912443, guid: 71d0cedeed272804da43dad3344e2cff,
     type: 3}
+  controller: {fileID: 0}

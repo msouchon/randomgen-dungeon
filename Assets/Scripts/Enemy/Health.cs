@@ -12,23 +12,32 @@ public class Health : MonoBehaviour
 	public float flashDuration = 0.1f;
 	public GameObject fallApart;
 
+
+	Levels levelManager;
+
 	private MeshRenderer mr;
 
 	void Start() {
 		currentHealth = startingHealth;
 		mr = GetComponent<MeshRenderer>();
+		levelManager = GetComponent<Levels> ();
 	}
 
 	public void ApplyDamage(float damage) {
 		StartCoroutine(Flash());
 		currentHealth -= damage;
-		if (currentHealth <= 0)
+		if (currentHealth <= 0){
+			Levels.IncrementKillCount();
+			Debug.Log("TEST");
 			StartCoroutine(Die());
+		}
 	}
 
 	IEnumerator Die() {
 		Instantiate(fallApart, transform.position, transform.rotation);
 		Destroy(this.gameObject);
+		
+
     
     int dropChance = Random.Range(0, 5);
     // make a drop
