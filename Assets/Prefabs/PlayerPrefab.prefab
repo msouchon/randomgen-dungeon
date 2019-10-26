@@ -182,6 +182,7 @@ MonoBehaviour:
   normalMaterial: {fileID: 2100000, guid: bcc2c779fd7472546b4c8e9ba84c625c, type: 2}
   visible: 1
   effect: {fileID: 8004950313141762694, guid: a6ec8f04b10457741bd5590c185790a3, type: 3}
+  movementBonus: 0.1
 --- !u!114 &7631157040704199769
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,6 +9,7 @@ public class Invisibility : MonoBehaviour, ISpell
     public Material normalMaterial;
     public bool visible = true;
     public GameObject effect;
+    public float movementBonus = 5f;
 
     private MeshRenderer mr;
     private MeshRenderer[] mrChildren;
@@ -27,6 +28,7 @@ public class Invisibility : MonoBehaviour, ISpell
     IEnumerator GoInvisible()
     {
         visible = false;
+	GetComponent<Movement>().speed += movementBonus;
         GameObject g = Instantiate(effect);
         g.transform.position = transform.position;
         g.transform.SetParent(transform);
@@ -37,6 +39,7 @@ public class Invisibility : MonoBehaviour, ISpell
         }
         yield return new WaitForSeconds(duration);
         visible = true;
+	GetComponent<Movement>().speed -= movementBonus;
         foreach (MeshRenderer mrC in mrChildren)
         {
             mrC.material = normalMaterial;
