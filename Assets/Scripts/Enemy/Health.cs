@@ -10,7 +10,7 @@ public class Health : MonoBehaviour
 
 	public Material hitMaterial;
 	public float flashDuration = 0.1f;
-	public GameObject explosion;
+	public GameObject fallApart;
 
 	private MeshRenderer mr;
 
@@ -23,14 +23,13 @@ public class Health : MonoBehaviour
 		StartCoroutine(Flash());
 		currentHealth -= damage;
 		if (currentHealth <= 0)
-			//Destroy(this.gameObject);
 			StartCoroutine(Die());
 	}
 
 	IEnumerator Die() {
-		yield return new WaitForSeconds(flashDuration);
-		Instantiate(explosion, transform.position, transform.rotation);
+		Instantiate(fallApart, transform.position, transform.rotation);
 		Destroy(this.gameObject);
+		yield return null;
 	}
 	
 	IEnumerator Flash() {
