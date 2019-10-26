@@ -20,7 +20,6 @@ public class Levels : MonoBehaviour
     }
     public static void IncrementKillCount(){
         killCount += 1;
-        Debug.Log(killCount);
     }
 
     void Update()
