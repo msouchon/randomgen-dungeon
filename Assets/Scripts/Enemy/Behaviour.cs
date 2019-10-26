@@ -64,6 +64,10 @@ public class Behaviour : MonoBehaviour
 			if (hC.gameObject.GetComponent<Health>() != null) {
 				hC.gameObject.GetComponent<Health>().ApplyDamage(explosionDamage);
 			}
+
+			if (hC.gameObject.GetComponent<PlayerHealth>() != null) {
+				hC.gameObject.GetComponent<PlayerHealth>().ApplyDamage(explosionDamage);
+			}
 		}
 
 	}

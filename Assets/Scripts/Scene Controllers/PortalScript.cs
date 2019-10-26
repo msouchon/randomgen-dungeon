@@ -13,11 +13,13 @@ public class PortalScript : MonoBehaviour
     
     private MeshRenderer mr;
     
-    // Start is called before the first frame update
+    private bool isActive;
+    
     void Start()
     {
         mr = GetComponent<MeshRenderer>();
-	mr.material = inactive;
+	      mr.material = inactive;
+        isActive = false;
     }
     public void NextLevel()
     {
@@ -25,12 +27,15 @@ public class PortalScript : MonoBehaviour
     }
     void OnCollisionEnter(Collision col)
     {
-        if(col.gameObject == player){
+        if(col.gameObject == player && isActive){
             NextLevel();
         }
     }
     // Update is called once per frame
     void Update()
     {
+        if(Levels.killCount > killsRequired){
+            isActive = true;
+        }
     }
 }
