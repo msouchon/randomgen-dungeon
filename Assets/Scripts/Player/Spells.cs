@@ -70,7 +70,16 @@ public class Spells : MonoBehaviour
                 }
             }
         }
-	if(Input.GetKey("c")) {
+
+        if (Input.GetMouseButton(0))
+        {
+            spellDict[SpellsEnum.SHOOT].script.doAction();
+        }
+        if (Input.GetMouseButton(1))
+        {
+            spellDict[SpellsEnum.DASH].script.doAction();
+        }
+	      if(Input.GetKey("c")) {
             playerSpells = new List<SpellsEnum>();
             foreach(Spell spell in spells) {
                 playerSpells.Add(spell.spell);

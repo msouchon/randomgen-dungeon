@@ -21,7 +21,7 @@ public class SpellsUI : MonoBehaviour
             int j = 0;
             foreach (Transform child in transform.parent.transform)
             {
-                if (child != this.transform)
+                if (child != this.transform && child.name != "MouseBar")
                 {
                     if (playerSpells.Count <= j || playerSpells[j] != spellsScript.playerSpells[j])
                     {

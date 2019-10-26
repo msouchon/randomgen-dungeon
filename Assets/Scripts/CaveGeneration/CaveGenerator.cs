@@ -62,7 +62,7 @@ public class CaveGenerator : MonoBehaviour
 	}
 
 	// Generates a cave using a cellular automaton
-	void generateCave(bool placePortal) {
+	public void generateCave(bool placePortal) {
 		heightmap = new int[xSize, ySize];
 		
 		// Set sides as walls and do initial random fill

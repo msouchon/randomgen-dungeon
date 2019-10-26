@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,17 +12,17 @@ public class PortalScript : MonoBehaviour
     public Material active;
     public Material inactive;
     public Text text;
-    
+
     private MeshRenderer mr;
-    
+
     private bool isActive;
-    
+
     void Start()
     {
         mr = GetComponentInChildren<MeshRenderer>();
-	mr.material = inactive;
+    mr.material = inactive;
         isActive = false;
-	player = GameObject.Find("Player");
+    player = GameObject.Find("Player");
     }
     public void NextLevel()
     {
@@ -39,11 +39,11 @@ public class PortalScript : MonoBehaviour
     {
         if(Levels.killCount >= killsRequired){
             isActive = true;
-	    mr.material = active;
-	    text.text = "Portal Active";
+            mr.material = active;
+            text.text = "Portal Active";
         }
-	else {
-		text.text = Levels.killCount.ToString() + "/" + killsRequired.ToString();
-	}
+        else {
+            text.text = Levels.killCount.ToString() + "/" + killsRequired.ToString();
+        }
     }
 }

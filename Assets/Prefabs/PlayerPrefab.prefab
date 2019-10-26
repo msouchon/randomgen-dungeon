@@ -213,7 +213,7 @@ MonoBehaviour:
   spells:
   - spell: 0
     icon: {fileID: 1632270006596969593, guid: 41b0fe07ecbb536488bf95cf648288c5, type: 3}
-    drop: {fileID: 1188660512693592308, guid: 5ca7e40263b089c4bba8fa9dbf30d5fa, type: 3}
+    drop: {fileID: 0}
   - spell: 1
     icon: {fileID: 5042024832066941916, guid: 3e968a5c2de0d55428435a4cfea8080d, type: 3}
     drop: {fileID: 0}
@@ -229,7 +229,7 @@ MonoBehaviour:
   - spell: 5
     icon: {fileID: 6818085716969981673, guid: 85052394d0c62574e87db5294004f54c, type: 3}
     drop: {fileID: 6375259909650376757, guid: 6b4d6ec201a3f1149be7806e81e571e1, type: 3}
-  playerSpells: 01000000
+  playerSpells: 
 --- !u!96 &2836812690132466119
 TrailRenderer:
   serializedVersion: 2
