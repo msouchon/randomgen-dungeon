@@ -9,7 +9,8 @@ public class Spells : MonoBehaviour
         DASH,
         SHOOT,
         SHOOTLIGHTNING,
-	LIGHTNINGBALL
+        LIGHTNINGBALL,
+        INVISIBILITY
     }
 
     [System.Serializable]
@@ -42,9 +43,12 @@ public class Spells : MonoBehaviour
                 case SpellsEnum.DASH:
                     spell.script = this.GetComponent<Dash>();
                     break;
-		case SpellsEnum.LIGHTNINGBALL:
-		    spell.script = this.GetComponent<lightningBallSummon>();
-		    break;
+                case SpellsEnum.LIGHTNINGBALL:
+                    spell.script = this.GetComponent<lightningBallSummon>();
+                    break;
+                case SpellsEnum.INVISIBILITY:
+                    spell.script = this.GetComponent<Invisibility>();
+                    break;
             }
             spellDict.Add(spell.spell, spell);
         }
@@ -64,12 +68,15 @@ public class Spells : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other) {
+    private void OnTriggerEnter(Collider other)
+    {
         Debug.Log(other);
         DroppedSpell droppedSpell = other.gameObject.GetComponent<DroppedSpell>();
-        if(droppedSpell) {
+        if (droppedSpell)
+        {
             SpellsEnum type = droppedSpell.spellType;
-            if(!playerSpells.Contains(type)) {
+            if (!playerSpells.Contains(type))
+            {
                 playerSpells.Add(type);
                 Destroy(other.gameObject);
             }

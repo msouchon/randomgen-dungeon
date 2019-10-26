@@ -207,6 +207,9 @@ MonoBehaviour:
   - spell: 3
     icon: {fileID: 6762819974296269738, guid: d790869b72e36a942902e5f21073470e, type: 3}
     drop: {fileID: 4241792644647357828, guid: ef2d524a61f18e149be295b5fac52ff0, type: 3}
+  - spell: 4
+    icon: {fileID: 7673314557922253905, guid: 0757c5e5269a84f4ab67906c7d42963a, type: 3}
+    drop: {fileID: 1509262043533414812, guid: f1f5f9bc9ceac7c4b81f3b53498b44a7, type: 3}
   playerSpells: 01000000
 --- !u!96 &2836812690132466119
 TrailRenderer:
