@@ -29,6 +29,20 @@ public class Health : MonoBehaviour
 	IEnumerator Die() {
 		Instantiate(fallApart, transform.position, transform.rotation);
 		Destroy(this.gameObject);
+    
+    int dropChance = Random.Range(0, 5);
+    Debug.Log(dropChance);
+    // make a drop
+    if (dropChance == 0)
+      {
+          Spells playerSpells = GameObject.Find("Player").GetComponent<Spells>();
+          int spellDrop = Random.Range(0, playerSpells.spells.Count);
+          Debug.Log(playerSpells.spells[spellDrop].spell);
+          if (playerSpells.spells[spellDrop].drop)
+          {
+              Instantiate(playerSpells.spells[spellDrop].drop, transform.position, Quaternion.Euler(0, 180, 0));
+          }
+      }
 		yield return null;
 	}
 	
