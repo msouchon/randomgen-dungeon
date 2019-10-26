@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 2836812690132466116}
   - component: {fileID: 8873067900208387619}
   - component: {fileID: 8609931849580206973}
+  - component: {fileID: 6035820473117792370}
   - component: {fileID: 7631157040704199769}
   - component: {fileID: 2836812690132466119}
   - component: {fileID: 7625472682085129911}
@@ -198,6 +199,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bomb: {fileID: 9110344819506426868, guid: 8428e46c7b12c7f4990fedf4bda08f60, type: 3}
+--- !u!114 &6035820473117792370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2836812690132466127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afa60716abd8d7448bd2a38ca738cd97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laser: {fileID: 6459358697362833171, guid: d346f385e6cc85945b7a31ab46b0d801, type: 3}
+  laserEffect: {fileID: 147122484170422351, guid: 62b80735afd5b694a9ed2fb018117832,
+    type: 3}
+  laserDamage: 100
+  laserDelay: 1
+  laserWidth: 0.5
+  laserDuration: 0.5
+  maxDist: 100
 --- !u!114 &7631157040704199769
 MonoBehaviour:
   m_ObjectHideFlags: 0
