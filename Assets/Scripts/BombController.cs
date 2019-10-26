@@ -35,7 +35,6 @@ public class BombController : MonoBehaviour
 			if (hitColliders.Length > 0) {
 				targetFound = true;
 				target = hitColliders[0].gameObject;
-				Debug.Log(target);
 			}
 		}
 		if (target != null) {

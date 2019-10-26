@@ -70,7 +70,6 @@ public class Spells : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other);
         DroppedSpell droppedSpell = other.gameObject.GetComponent<DroppedSpell>();
         if (droppedSpell)
         {
