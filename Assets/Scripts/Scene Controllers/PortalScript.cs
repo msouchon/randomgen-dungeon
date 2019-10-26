@@ -6,12 +6,15 @@ using UnityEngine.SceneManagement;
 public class PortalScript : MonoBehaviour
 {
     public GameObject player;
-     
+
+    public int KILLSREQUIRED;
+    
+    private bool isActive;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        isActive = false;
     }
     public void NextLevel()
     {
@@ -19,13 +22,15 @@ public class PortalScript : MonoBehaviour
     }
     void OnCollisionEnter(Collision col)
     {
-        if(col.gameObject == player){
+        if(col.gameObject == player && isActive){
             NextLevel();
         }
     }
     // Update is called once per frame
     void Update()
     {
-        
+        if(Levels.killCount > KILLSREQUIRED){
+            isActive = true;
+        }
     }
 }
