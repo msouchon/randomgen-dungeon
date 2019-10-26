@@ -5,6 +5,10 @@ using System;
 
 public class CaveGenerator : MonoBehaviour
 {
+	public GameObject portal;
+	public int portalSpacing = 20;
+	public int killsRequired = 10;
+
 	public int xSize;
 	public int ySize;
 	public int borderSize = 1;
@@ -23,12 +27,8 @@ public class CaveGenerator : MonoBehaviour
 
 	void Start() {
 		random = new System.Random();
-		generateCave();
+		generateCave(true);
 
-	}
-
-	void Update() {
-		if (Input.GetButtonDown("Fire1")) generateCave();
 	}
 
 	void clearPosition(int xPos, int yPos, int width) {
@@ -62,7 +62,7 @@ public class CaveGenerator : MonoBehaviour
 	}
 
 	// Generates a cave using a cellular automaton
-	void generateCave() {
+	void generateCave(bool placePortal) {
 		heightmap = new int[xSize, ySize];
 		
 		// Set sides as walls and do initial random fill
@@ -119,6 +119,23 @@ public class CaveGenerator : MonoBehaviour
 		}
 		MeshGenerator mG = GetComponent<MeshGenerator>();
 		clearPosition(xSize/2, ySize/2, 40);
+		
+		if (placePortal) {
+			int xPos, yPos;
+			if (UnityEngine.Random.value > 0.5) {
+				xPos = UnityEngine.Random.Range(portalSpacing*2, xSize-portalSpacing*2);
+				yPos = (UnityEngine.Random.value > 0.5) ? portalSpacing*2: ySize-portalSpacing*2;
+			}
+			else {
+				yPos = UnityEngine.Random.Range(portalSpacing*2, ySize-portalSpacing*2);
+				xPos = (UnityEngine.Random.value > 0.5) ? portalSpacing*2: xSize-portalSpacing*2;
+			}
+			clearPosition(xPos, yPos, portalSpacing);
+			GameObject g = Instantiate(portal);
+			g.transform.position = new Vector3(xPos-xSize/2, 1.4f, yPos-ySize/2);
+			g.GetComponent<PortalScript>().killsRequired = killsRequired;
+		}
+
 		heightmap = borderize(borderSize, heightmap);
 		mG.generateMesh(heightmap, 1);
 	}
@@ -156,18 +173,5 @@ public class CaveGenerator : MonoBehaviour
 			}
 		}
 		return count;
-	}
-	
-	// Testing for view of the cave
-	void OnDrawGizmos() {
-		if (heightmap != null) {
-			for (int y = 0; y < ySize; y++) {
-				for (int x = 0; x < xSize; x++) {
-					Gizmos.color = (heightmap[x, y] == 1) ? Color.black : Color.white;
-					Vector3 position = new Vector3(-xSize/2 + x + 0.5f, 0, -ySize/2 + y + 0.5f);
-					Gizmos.DrawCube(position, Vector3.one);
-				}
-			}
-		}
 	}
 }

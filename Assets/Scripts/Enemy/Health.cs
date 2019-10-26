@@ -28,7 +28,6 @@ public class Health : MonoBehaviour
 		currentHealth -= damage;
 		if (currentHealth <= 0){
 			Levels.IncrementKillCount();
-			Debug.Log("TEST");
 			StartCoroutine(Die());
 		}
 	}
