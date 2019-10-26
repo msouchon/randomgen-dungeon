@@ -18,26 +18,35 @@ public class SpellsUI : MonoBehaviour
     {
         if (!checkLists(playerSpells, spellsScript.playerSpells))
         {
-            playerSpells = new List<Spells.SpellsEnum>(spellsScript.playerSpells);
-
+            int j = 0;
             foreach (Transform child in transform.parent.transform)
             {
                 if (child != this.transform)
                 {
-                    GameObject.Destroy(child.gameObject);
+                    if (playerSpells.Count <= j || playerSpells[j] != spellsScript.playerSpells[j])
+                    {
+                        GameObject.Destroy(child.gameObject);
+                    }
+                    j++;
+
                 }
             }
 
-            for (int i = 0; i < playerSpells.Count; i++)
+            for (int i = 0; i < spellsScript.playerSpells.Count; i++)
             {
-                Spells.Spell spell = spellsScript.spellDict[playerSpells[i]];
-                Vector3 position = new Vector3(60 * i, -1, 0) - new Vector3(120, 0, 0);
-                GameObject obj = Instantiate(spell.icon);
-                obj.transform.SetParent(this.transform);
-                obj.transform.localPosition = position;
-                obj.transform.SetParent(this.transform.parent);
+                if (playerSpells.Count <= i || playerSpells[i] != spellsScript.playerSpells[i])
+                {
+                    Spells.Spell spell = spellsScript.spellDict[spellsScript.playerSpells[i]];
+                    Vector3 position = new Vector3(60 * i, -1, 0) - new Vector3(120, 0, 0);
+                    GameObject obj = Instantiate(spell.icon);
+                    obj.transform.SetParent(this.transform);
+                    obj.transform.localPosition = position;
+                    obj.transform.SetParent(this.transform.parent);
+                }
             }
             this.transform.SetSiblingIndex(10);
+
+            playerSpells = new List<Spells.SpellsEnum>(spellsScript.playerSpells);
         }
     }
 
