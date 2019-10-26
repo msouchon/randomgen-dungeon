@@ -58,7 +58,7 @@ public class Spells : MonoBehaviour
     {
         for (int i = 1; i <= 5; i++)
         {
-            if (Input.GetKeyDown(i.ToString()))
+            if (Input.GetKey(i.ToString()))
             {
                 if (playerSpells.Count >= i)
                 {

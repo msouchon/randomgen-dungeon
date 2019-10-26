@@ -40,7 +40,8 @@ public class Health : MonoBehaviour
           Debug.Log(playerSpells.spells[spellDrop].spell);
           if (playerSpells.spells[spellDrop].drop)
           {
-              Instantiate(playerSpells.spells[spellDrop].drop, transform.position, Quaternion.Euler(0, 180, 0));
+              GameObject d = Instantiate(playerSpells.spells[spellDrop].drop, transform.position, Quaternion.Euler(0, 180, 0));
+	      d.transform.position -= Vector3.up * 0.9f;
           }
       }
 		yield return null;
