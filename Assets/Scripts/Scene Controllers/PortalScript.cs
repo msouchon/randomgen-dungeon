@@ -6,16 +6,22 @@ using UnityEngine.SceneManagement;
 public class PortalScript : MonoBehaviour
 {
     public GameObject player;
-     
+    public string sceneName;
+    public int killsRequired;
+    public Material active;
+    public Material inactive;
+    
+    private MeshRenderer mr;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        mr = GetComponent<MeshRenderer>();
+	mr.material = inactive;
     }
     public void NextLevel()
     {
-        SceneManager.LoadScene("TestScene");
+        SceneManager.LoadScene(sceneName);
     }
     void OnCollisionEnter(Collision col)
     {
@@ -26,6 +32,5 @@ public class PortalScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 }

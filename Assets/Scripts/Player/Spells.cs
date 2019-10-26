@@ -70,6 +70,12 @@ public class Spells : MonoBehaviour
                 }
             }
         }
+	if(Input.GetKey("c")) {
+            playerSpells = new List<SpellsEnum>();
+            foreach(Spell spell in spells) {
+                playerSpells.Add(spell.spell);
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
