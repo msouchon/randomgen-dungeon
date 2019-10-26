@@ -26,7 +26,6 @@ public class Spells : MonoBehaviour
 
     public List<SpellsEnum> playerSpells;
 
-    // Start is called before the first frame update
     void Start()
     {
         for (int i = 0; i < spells.Count; i++)
@@ -51,7 +50,6 @@ public class Spells : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         for (int i = 1; i <= 5; i++)

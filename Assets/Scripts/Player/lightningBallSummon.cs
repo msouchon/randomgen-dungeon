@@ -9,14 +9,10 @@ public class lightningBallSummon : MonoBehaviour, ISpell
     public float flashInterval = 1.0f;
     public float flashDuration = 0.2f;
     public Material flashMaterial;
-    public string keyInput = "9";
 
     private MeshRenderer mr;
     private Material m;
 
-    void Start()
-    {
-    }
     public void doAction()
     {
 	    GameObject icon = GameObject.Find("LightningBallIcon(Clone)");

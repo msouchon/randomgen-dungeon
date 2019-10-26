@@ -8,19 +8,17 @@ public class SpellsUI : MonoBehaviour
     public Spells spellsScript;
 
     private List<Spells.SpellsEnum> playerSpells = new List<Spells.SpellsEnum>();
-    // Start is called before the first frame update
+
     void Start()
     {
         spellsScript = player.GetComponent<Spells>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!checkLists(playerSpells, spellsScript.playerSpells))
         {
             playerSpells = new List<Spells.SpellsEnum>(spellsScript.playerSpells);
-            Debug.Log("Diff");
 
             foreach (Transform child in transform.parent.transform)
             {
