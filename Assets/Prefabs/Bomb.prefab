@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 9110344819506426875}
   - component: {fileID: 9110344819506426879}
   - component: {fileID: 4472164184066635483}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bomb
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -114,6 +114,8 @@ MonoBehaviour:
     type: 3}
   explosionDuration: 3
   explosionRadius: 4
+  targetRadius: 12
+  speed: 5
   explosionDamage: 100
   flashMaterial: {fileID: 2100000, guid: 01cc30e204f38cf4d8379581d89e2a91, type: 2}
 --- !u!54 &4472164184066635483
@@ -144,7 +146,7 @@ GameObject:
   - component: {fileID: 9110344819745660999}
   - component: {fileID: 9110344819745660992}
   - component: {fileID: 9110344819745660993}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BombTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
