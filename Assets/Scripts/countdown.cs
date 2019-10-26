@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class countdown : MonoBehaviour
 {
-    public int cooldown = 3;
-    private int TimeLeft = 3;
+    public float cooldown = 3;
+    private float TimeLeft = 3;
     private float time = 0.0f;
-    private float interpolationPeriod = 1.0f;
+    private float interpolationPeriod = 0.1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,17 +24,25 @@ public class countdown : MonoBehaviour
         if (time >= interpolationPeriod)
         {
             time = time - interpolationPeriod;
-            TimeLeft -= 1;
+            TimeLeft -= interpolationPeriod;
 
-            GetComponent<Text>().text = TimeLeft.ToString();
-            // execute block of code here
-        }
-
-        if (TimeLeft <= 0)
-        {
-            TimeLeft = cooldown;
-            this.transform.parent.gameObject.SetActive(false);
-            GetComponent<Text>().text = TimeLeft.ToString();
+            if (TimeLeft > 1)
+            {
+                GetComponent<Text>().text = ((int)TimeLeft + 1).ToString();
+            }
+            else
+            {
+                if (TimeLeft < 0.1f)
+                {
+                    TimeLeft = cooldown;
+                    GetComponent<Text>().text = TimeLeft.ToString();
+                    this.transform.parent.gameObject.SetActive(false);
+                }
+                else
+                {
+                    GetComponent<Text>().text = TimeLeft.ToString();
+                }
+            }
         }
     }
 }
