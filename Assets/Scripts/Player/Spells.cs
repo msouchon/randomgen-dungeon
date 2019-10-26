@@ -18,6 +18,7 @@ public class Spells : MonoBehaviour
         public SpellsEnum spell;
         public GameObject icon;
         public ISpell script;
+        public GameObject drop;
     }
 
     public List<Spell> spells;
@@ -59,9 +60,20 @@ public class Spells : MonoBehaviour
             {
                 if (playerSpells.Count >= i)
                 {
-                    Debug.Log(playerSpells[i - 1]);
                     spellDict[playerSpells[i - 1]].script.doAction();
                 }
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        Debug.Log(other);
+        DroppedSpell droppedSpell = other.gameObject.GetComponent<DroppedSpell>();
+        if(droppedSpell) {
+            SpellsEnum type = droppedSpell.spellType;
+            if(!playerSpells.Contains(type)) {
+                playerSpells.Add(type);
+                Destroy(other.gameObject);
             }
         }
     }

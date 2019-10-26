@@ -180,13 +180,17 @@ MonoBehaviour:
   spells:
   - spell: 0
     icon: {fileID: 1632270006596969593, guid: 41b0fe07ecbb536488bf95cf648288c5, type: 3}
+    drop: {fileID: 1188660512693592308, guid: 5ca7e40263b089c4bba8fa9dbf30d5fa, type: 3}
   - spell: 1
     icon: {fileID: 5042024832066941916, guid: 3e968a5c2de0d55428435a4cfea8080d, type: 3}
+    drop: {fileID: 0}
   - spell: 2
     icon: {fileID: 6762819974296269738, guid: 5503e3fd5b6997643b9ef95cc30facda, type: 3}
+    drop: {fileID: 8239417309288948785, guid: 73ea7d475e682de43b40d4ed269abce6, type: 3}
   - spell: 3
     icon: {fileID: 6762819974296269738, guid: d790869b72e36a942902e5f21073470e, type: 3}
-  playerSpells: 00000000010000000200000003000000
+    drop: {fileID: 4241792644647357828, guid: ef2d524a61f18e149be295b5fac52ff0, type: 3}
+  playerSpells: 01000000
 --- !u!96 &2836812690132466119
 TrailRenderer:
   serializedVersion: 2
