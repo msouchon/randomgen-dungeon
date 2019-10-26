@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 600192710510594077}
   - component: {fileID: 2836812690132466116}
   - component: {fileID: 8873067900208387619}
+  - component: {fileID: 8609931849580206973}
   - component: {fileID: 7631157040704199769}
   - component: {fileID: 2836812690132466119}
   m_Layer: 0
@@ -183,6 +184,19 @@ MonoBehaviour:
   visible: 1
   effect: {fileID: 8004950313141762694, guid: a6ec8f04b10457741bd5590c185790a3, type: 3}
   movementBonus: 0.1
+--- !u!114 &8609931849580206973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2836812690132466127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad358dd2a136fcd4bb80829d04470609, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bomb: {fileID: 9110344819506426868, guid: 8428e46c7b12c7f4990fedf4bda08f60, type: 3}
 --- !u!114 &7631157040704199769
 MonoBehaviour:
   m_ObjectHideFlags: 0
