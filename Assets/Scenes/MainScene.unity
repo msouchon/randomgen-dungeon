@@ -368,6 +368,7 @@ GameObject:
   - component: {fileID: 825701890}
   - component: {fileID: 825701889}
   - component: {fileID: 825701888}
+  - component: {fileID: 825701892}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -455,6 +456,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &825701892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825701887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6635dea53f1f17f418b275f12989961f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenuUI: {fileID: 1652512977}
 --- !u!1001 &1333547597
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -970,7 +984,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1652512977}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -1105,7 +1119,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1339059210}
-  sceneManager: {fileID: 1444335694}
 --- !u!1 &1751991171
 GameObject:
   m_ObjectHideFlags: 0
@@ -1188,12 +1201,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 85bd8af02646c4b4a9925b2e8a290149, type: 3}
-        m_MethodName: 
+      - m_Target: {fileID: 1961123805}
+        m_MethodName: MainMenu1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
