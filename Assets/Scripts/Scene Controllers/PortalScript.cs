@@ -8,9 +8,9 @@ public class PortalScript : MonoBehaviour
     public GameObject player;
 
     public int KILLSREQUIRED;
-    
+
     private bool isActive;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,14 +22,16 @@ public class PortalScript : MonoBehaviour
     }
     void OnCollisionEnter(Collision col)
     {
-        if(col.gameObject == player && isActive){
+        if (col.gameObject == player && isActive)
+        {
             NextLevel();
         }
     }
     // Update is called once per frame
     void Update()
     {
-        if(Levels.killCount > KILLSREQUIRED){
+        if (Levels.killCount >= KILLSREQUIRED)
+        {
             isActive = true;
         }
     }

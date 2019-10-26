@@ -70,6 +70,15 @@ public class Spells : MonoBehaviour
                 }
             }
         }
+
+        if (Input.GetMouseButton(0))
+        {
+            spellDict[SpellsEnum.SHOOT].script.doAction();
+        }
+        if (Input.GetMouseButton(1))
+        {
+            spellDict[SpellsEnum.DASH].script.doAction();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
