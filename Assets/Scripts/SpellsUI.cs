@@ -31,13 +31,13 @@ public class SpellsUI : MonoBehaviour
             for (int i = 0; i < playerSpells.Count; i++)
             {
                 Spells.Spell spell = spellsScript.spellDict[playerSpells[i]];
-                Vector3 position = new Vector3(60 * i, -1, 0) - new Vector3(119, 0, 0);
+                Vector3 position = new Vector3(60 * i, -1, 0) - new Vector3(120, 0, 0);
                 GameObject obj = Instantiate(spell.icon);
                 obj.transform.SetParent(this.transform);
                 obj.transform.localPosition = position;
                 obj.transform.SetParent(this.transform.parent);
             }
-            this.transform.SetSiblingIndex(playerSpells.Count);
+            this.transform.SetSiblingIndex(10);
         }
     }
 

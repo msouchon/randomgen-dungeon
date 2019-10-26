@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6762819974296269751}
   - component: {fileID: 6762819974296269736}
   m_Layer: 5
-  m_Name: ShootLightningIcon
+  m_Name: LightningBallIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -185,7 +185,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 18, y: -3}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 60, y: 58}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6762819976175883942
@@ -223,7 +223,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 56
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
