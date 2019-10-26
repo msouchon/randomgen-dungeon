@@ -10,7 +10,8 @@ public class Spells : MonoBehaviour
         SHOOT,
         SHOOTLIGHTNING,
         LIGHTNINGBALL,
-        INVISIBILITY
+        INVISIBILITY,
+        BOMB
     }
 
     [System.Serializable]
@@ -48,6 +49,9 @@ public class Spells : MonoBehaviour
                     break;
                 case SpellsEnum.INVISIBILITY:
                     spell.script = this.GetComponent<Invisibility>();
+                    break;
+                case SpellsEnum.BOMB:
+                    spell.script = this.GetComponent<BombPlace>();
                     break;
             }
             spellDict.Add(spell.spell, spell);
