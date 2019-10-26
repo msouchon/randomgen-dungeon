@@ -18,7 +18,7 @@ public class LightningBulletController : MonoBehaviour
 	}
 
 	void OnTriggerEnter(Collider other) {
-		if (other.gameObject.tag != "Player") {
+		if (other.gameObject.tag == "Wall") {
 			RaycastHit hit;
 			Physics.Raycast(transform.position, direction, out hit);
 			direction = Vector3.Reflect(direction, hit.normal);
