@@ -45,7 +45,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceToSpawn: 10
   cooldown: 1
+  maxToSpawn: 0
   enemies:
   - {fileID: 5644125771837703199, guid: 8136a59c2468ab24897e87b7157b7cf9, type: 3}
+  - {fileID: 868254340835372372, guid: 5571304095285a14bbe1cd1aa8160c9b, type: 3}
   chanceToSpawn:
-  - 1
+  - 0.5
+  - 0.5
