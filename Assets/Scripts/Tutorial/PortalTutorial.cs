@@ -32,21 +32,21 @@ public class PortalTutorial : MonoBehaviour
         {
             GameObject.Find("LevelController").GetComponent<Tutorial>().portal1();
             col.transform.position = new Vector3(-8, 1, 0);
-            GameObject.Find("CaveGenerator").GetComponent<CaveGenerator>().generateCave();
+            GameObject.Find("CaveGenerator").GetComponent<CaveGenerator>().generateCave(false);
             currentState = state.SECOND;
         }
         else if (col.gameObject == player && currentState == state.SECOND)
         {
             GameObject.Find("LevelController").GetComponent<Tutorial>().portal2();
             col.transform.position = new Vector3(-8, 1, 0);
-            GameObject.Find("CaveGenerator").GetComponent<CaveGenerator>().generateCave();
+            GameObject.Find("CaveGenerator").GetComponent<CaveGenerator>().generateCave(false);
             currentState = state.THIRD;
         }
         else if (col.gameObject == player && currentState == state.THIRD && player.GetComponent<Spells>().playerSpells.Count >= 4)
         {
             GameObject.Find("LevelController").GetComponent<Tutorial>().portal3();
             col.transform.position = new Vector3(-8, 1, 0);
-            GameObject.Find("CaveGenerator").GetComponent<CaveGenerator>().generateCave();
+            GameObject.Find("CaveGenerator").GetComponent<CaveGenerator>().generateCave(false);
             currentState = state.FOURTH;
         }
     }
