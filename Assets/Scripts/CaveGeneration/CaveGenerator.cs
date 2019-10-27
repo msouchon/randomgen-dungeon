@@ -22,7 +22,7 @@ public class CaveGenerator : MonoBehaviour
     public int vonNeumannN;
     [Range(0, 20)] public int wallThreshold;
 
-    private int[,] heightmap;
+    public int[,] heightmap;
     private System.Random random;
     private GameObject currPortal;
 
