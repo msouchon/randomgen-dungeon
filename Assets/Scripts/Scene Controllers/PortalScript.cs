@@ -20,9 +20,9 @@ public class PortalScript : MonoBehaviour
     void Start()
     {
         mr = GetComponentInChildren<MeshRenderer>();
-    mr.material = inactive;
+        mr.material = inactive;
         isActive = false;
-    player = GameObject.Find("Player");
+        player = GameObject.Find("Player");
     }
     public void NextLevel()
     {
@@ -30,19 +30,22 @@ public class PortalScript : MonoBehaviour
     }
     void OnTriggerEnter(Collider c)
     {
-        if(c.gameObject == player && isActive){
+        if (c.gameObject == player && isActive)
+        {
             NextLevel();
         }
     }
     // Update is called once per frame
     void Update()
     {
-        if(Levels.killCount >= killsRequired){
+        if (Levels.killCount >= killsRequired)
+        {
             isActive = true;
             mr.material = active;
             text.text = "Portal Active";
         }
-        else {
+        else
+        {
             text.text = Levels.killCount.ToString() + "/" + killsRequired.ToString();
         }
     }
