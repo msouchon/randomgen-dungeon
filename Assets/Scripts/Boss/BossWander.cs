@@ -22,8 +22,8 @@ public class BossWander : MonoBehaviour
     private Vector3 targetPoint;
     private float Timer = 0;
 
-    private int Health;
-    private int INITIALHEALTH;
+    private float Health;
+    private float INITIALHEALTH;
 
     public float SHOOTTIME;
     private float difficulty;
@@ -42,18 +42,14 @@ public class BossWander : MonoBehaviour
         targetPoint = point1;
         transform.position = point4;
         bulletTimer = 0;
-        INITIALHEALTH = 2000;
-        Health = 200;
-        difficulty = ((float)(INITIALHEALTH - Health) / (float)INITIALHEALTH) * 5 + 1;
-        Debug.Log(difficulty);
-        Debug.Log("HELLO");
+	INITIALHEALTH = GetComponent<Health>().startingHealth;
+	Health = GetComponent<Health>().startingHealth;
     }
 
     // Update is called once per frame
 
     void Shoot()
     {
-        Debug.Log(difficulty);
         GameObject b;
         Vector3 bulletDirection;
         float angle;
@@ -72,20 +68,59 @@ public class BossWander : MonoBehaviour
 
         }
     }
+
+    IEnumerator ShootSpiral(float delay) {
+        GameObject b;
+        Vector3 bulletDirection;
+        float angle;
+        int bulletNum = ((int)difficulty) * 4;
+        for (int i = 0; i < bulletNum; i++)
+        {
+            angle = (i * 2 * Mathf.PI) / bulletNum;
+            bulletDirection = new Vector3(Mathf.Sin(angle), 0f, Mathf.Cos(angle));
+            b = Instantiate(bullet);
+            b.transform.position = transform.position;
+            b.transform.position = new Vector3(b.transform.position.x, 1, b.transform.position.z);
+            b.transform.localScale = new Vector3(16f / bulletNum, 16f / bulletNum, 16f / bulletNum);
+            b.GetComponent<BossBulletController>().direction = bulletDirection;
+            b.GetComponent<BossBulletController>().speed = bulletSpeed * difficulty;
+            Destroy(b, BULLETDURATION);
+		yield return new WaitForSeconds(delay);
+        }
+	Shoot();
+    }
+
+    void OnDestroy() {
+	    Shoot();
+    }
+
     void Update()
     {
         Timer += Time.deltaTime;
         bulletTimer += Time.deltaTime * difficulty;
+	Health = GetComponent<Health>().currentHealth;
+        difficulty = ((INITIALHEALTH - Health) / INITIALHEALTH) * 4 + 2;
         if (Timer > WALK_TIME)
         {
-            state += 1;
-            state %= 8;
-            Timer %= WALK_TIME;
+		int oldState = state;
+		while (state == oldState) {
+			state += (Random.Range(0, 5) * 2 + 1);
+            		state %= 8;
+		}
+        	Timer %= WALK_TIME;
         }
         if (bulletTimer > SHOOTTIME)
         {
             bulletTimer %= SHOOTTIME;
-            Shoot();
+	    if (difficulty > 4 && difficulty < 5) {
+	    	StartCoroutine(ShootSpiral(0.1f));
+	    }
+	    else if (difficulty >= 5) {
+		StartCoroutine(ShootSpiral(0.05f));
+	    }
+	    else {
+		    Shoot();
+	    }
         }
 
 
@@ -108,7 +143,7 @@ public class BossWander : MonoBehaviour
         }
         if (state % 2 == 1)
         {
-            rb.MovePosition(Vector3.MoveTowards(transform.position, targetPoint, speed * Time.deltaTime));
+            rb.MovePosition(Vector3.MoveTowards(transform.position, targetPoint, (speed + difficulty) * Time.deltaTime));
         }
         else
         {
