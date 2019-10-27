@@ -14,7 +14,7 @@ public class MainMenu : MonoBehaviour
     // Update is called once per frame
     public void Survival()
     {
-        SceneManager.LoadScene("TestScene");
+        SceneManager.LoadScene("SurvivalScene");
     }
 
     public void instructions()

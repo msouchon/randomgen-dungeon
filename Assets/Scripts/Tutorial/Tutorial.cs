@@ -30,7 +30,7 @@ public class Tutorial : MonoBehaviour
     private string dash2 = "Dashing can be used for movement and to push enemies and certain spells around.\nWatch out for cases where you could use this.\n\nEnter the portal to continue.";
     private string spells = "Killing enemies will cause certain spells to be dropped.\nWhen you pick up a spell it will be assigned to a key 1 through 5.\n\nTry killing some enemies and pick up the spells.";
     private string spells2 = "Press key 1-5 to use these new skills\n\nNow go through the portal to continue.";
-    private string enemies = "Some enemies may try and kill you!\nAvoid explosions and bullets and watch out for your health\nTry using your new spells on these enemies!\nEnter portal to continue.";
+    private string enemies = "Some enemies may try and kill you!\nAvoid explosions and bullets and watch out for your health. Some may even try and ambush you through walls.\nTry using your new spells on these enemies!\nEnter portal to continue.";
     private string portalText = "In the world portals will be hidden and require exploration to find.\nThey will also require a certain kill count to activate.\n\nTry getting kill count and enter the portal to finish the tutorial!";
 
     public Text Text;
