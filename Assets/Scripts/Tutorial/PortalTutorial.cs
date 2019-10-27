@@ -106,7 +106,7 @@ public class PortalTutorial : MonoBehaviour
         }
         else if (currentState == state.THIRD)
         {
-            if (player.GetComponent<Spells>().playerSpells.Count >= 4)
+            if (player.GetComponent<Spells>().playerSpells.Count >= 5)
             {
                 isActive = true;
                 mr.material = active;

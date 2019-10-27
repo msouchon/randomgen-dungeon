@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     public void Campaign()
     {
-        SceneManager.LoadScene("MainScene"); 
+        SceneManager.LoadScene("MainScene");
     }
 
     // Update is called once per frame
@@ -17,8 +17,9 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("TestScene");
     }
 
-    public void instructions(){
-        SceneManager.LoadScene("InstructionScene");
-        
+    public void instructions()
+    {
+        SceneManager.LoadScene("TutorialScene");
+
     }
 }

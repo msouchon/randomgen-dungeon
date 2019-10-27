@@ -129,17 +129,19 @@ public class Tutorial : MonoBehaviour
 
                 GameObject g = Instantiate(stillEnemy, new Vector3(8, 1, 6), Quaternion.identity);
                 g.GetComponent<Health>().tutorialSpell = Spells.SpellsEnum.SHOOTLIGHTNING;
-                g = Instantiate(stillEnemy, new Vector3(8, 1, 2), Quaternion.identity);
+                g = Instantiate(stillEnemy, new Vector3(8, 1, 3), Quaternion.identity);
                 g.GetComponent<Health>().tutorialSpell = Spells.SpellsEnum.LIGHTNINGBALL;
-                g = Instantiate(stillEnemy, new Vector3(8, 1, -2), Quaternion.identity);
+                g = Instantiate(stillEnemy, new Vector3(8, 1, -0), Quaternion.identity);
                 g.GetComponent<Health>().tutorialSpell = Spells.SpellsEnum.INVISIBILITY;
-                g = Instantiate(stillEnemy, new Vector3(8, 1, -6), Quaternion.identity);
+                g = Instantiate(stillEnemy, new Vector3(8, 1, -3), Quaternion.identity);
                 g.GetComponent<Health>().tutorialSpell = Spells.SpellsEnum.BOMB;
+                g = Instantiate(stillEnemy, new Vector3(8, 1, -6), Quaternion.identity);
+                g.GetComponent<Health>().tutorialSpell = Spells.SpellsEnum.LASER;
                 spawned = true;
             }
 
             GameObject player = GameObject.Find("Player");
-            if (player.GetComponent<Spells>().playerSpells.Count >= 4)
+            if (player.GetComponent<Spells>().playerSpells.Count >= 5)
             {
                 Text.text = spells2;
             }
