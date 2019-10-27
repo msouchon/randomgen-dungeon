@@ -11,7 +11,7 @@ public class BossWander : MonoBehaviour
 
     public GameObject bullet;
 
-    public int BULLETNUM;
+    public int BULLETNUM1;
 
     public float BULLETDURATION;
 
@@ -21,10 +21,18 @@ public class BossWander : MonoBehaviour
     public Vector3 point4;
     private Vector3 targetPoint;
     private float Timer = 0;
+
+    private int Health;
+    private int INITIALHEALTH;
+
+    public float SHOOTTIME;
+    private float difficulty;
     
     public float WALK_TIME;
     // state varies between 0-7
     public int state;
+
+    public float bulletTimer;
     
     // Start is called before the first frame update
     void Start()
@@ -33,22 +41,30 @@ public class BossWander : MonoBehaviour
         state = 0;
         targetPoint = point1;
         transform.position = point4;
+        bulletTimer = 0;
+        INITIALHEALTH = 2000;
+        Health = 200;
+        difficulty = ((float) (INITIALHEALTH-Health)/(float) INITIALHEALTH)*5 + 1;
+        Debug.Log(difficulty);
+        Debug.Log("HELLO");
     }
 
     // Update is called once per frame
     
     void Shoot(){
+        Debug.Log(difficulty);
         GameObject b;
         Vector3 bulletDirection;
         float angle;
-        for(int i=0; i<BULLETNUM; i++){
-            angle = (i*2*Mathf.PI)/BULLETNUM;
+        int bulletNum = ((int) difficulty)*4;
+        for(int i=0; i<bulletNum; i++){
+            angle = (i*2*Mathf.PI)/bulletNum;
             bulletDirection = new Vector3(Mathf.Sin(angle), 0f, Mathf.Cos(angle));
             b = Instantiate(bullet);
             b.transform.position = transform.position;
-            b.transform.localScale = new Vector3(3f, 3f, 3f);
-		    b.GetComponent<EnemyBulletController>().direction = bulletDirection;
-		    b.GetComponent<EnemyBulletController>().speed = bulletSpeed;
+            b.transform.localScale = new Vector3(16f/bulletNum, 16f/bulletNum, 16f/bulletNum);
+		    b.GetComponent<BossBulletController>().direction = bulletDirection;
+		    b.GetComponent<BossBulletController>().speed = bulletSpeed*difficulty;
 		    Destroy(b, BULLETDURATION);
             
         }
@@ -56,12 +72,17 @@ public class BossWander : MonoBehaviour
     void Update()
     {        
         Timer += Time.deltaTime;
+        bulletTimer += Time.deltaTime*difficulty;
         if (Timer > WALK_TIME){
-            Shoot();
             state += 1;
             state %= 8;
             Timer %= WALK_TIME;
         } 
+        if (bulletTimer > SHOOTTIME){
+            bulletTimer %= SHOOTTIME;
+            Shoot();
+        }
+
 
 
         switch (state)
