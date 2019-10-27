@@ -12,6 +12,7 @@ public class PortalScript : MonoBehaviour
     public Material active;
     public Material inactive;
     public Text text;
+    public bool boss = false;
 
     private MeshRenderer mr;
 
@@ -27,6 +28,7 @@ public class PortalScript : MonoBehaviour
     public void NextLevel()
     {
         Levels.playerSpells = player.GetComponent<Spells>().playerSpells;
+        Levels.depth++;
         SceneManager.LoadScene(sceneName);
     }
     void OnTriggerEnter(Collider c)
@@ -43,7 +45,14 @@ public class PortalScript : MonoBehaviour
         {
             isActive = true;
             mr.material = active;
-            text.text = "Portal Active";
+            if (boss)
+            {
+                text.text = "Portal Unstable";
+            }
+            else
+            {
+                text.text = "Portal Active";
+            }
         }
         else
         {

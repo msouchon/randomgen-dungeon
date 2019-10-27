@@ -90,7 +90,11 @@ public class Spells : MonoBehaviour
             playerSpells = new List<SpellsEnum>();
             foreach (Spell spell in spells)
             {
-                playerSpells.Add(spell.spell);
+                if (spell.spell != SpellsEnum.DASH && spell.spell != SpellsEnum.SHOOT)
+                {
+                    playerSpells.Add(spell.spell);
+                }
+
             }
         }
     }
