@@ -11,7 +11,7 @@ public class Health : MonoBehaviour
     public Material hitMaterial;
     public float flashDuration = 0.1f;
     public GameObject fallApart;
-
+    public bool boss = false;
 
     Levels levelManager;
 
@@ -33,14 +33,24 @@ public class Health : MonoBehaviour
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
-            Levels.IncrementKillCount();
+            if (!boss)
+            {
+                Levels.IncrementKillCount();
+            }
             StartCoroutine(Die());
         }
     }
 
     IEnumerator Die()
     {
-        Instantiate(fallApart, transform.position, transform.rotation);
+        if (!boss)
+        {
+            Instantiate(fallApart, transform.position, transform.rotation);
+        }
+        else
+        {
+            Levels.bossDead = true;
+        }
         Destroy(this.gameObject);
 
         if (!tutorial)

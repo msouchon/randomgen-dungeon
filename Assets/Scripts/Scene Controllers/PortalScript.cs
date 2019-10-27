@@ -29,34 +29,63 @@ public class PortalScript : MonoBehaviour
     {
         Levels.playerSpells = player.GetComponent<Spells>().playerSpells;
         Levels.depth++;
+        Levels.bossScene = false;
         SceneManager.LoadScene(sceneName);
     }
     void OnTriggerEnter(Collider c)
     {
         if (c.gameObject == player && isActive)
         {
-            NextLevel();
+            if (!boss)
+            {
+                NextLevel();
+            }
+            else
+            {
+                Levels.playerSpells = player.GetComponent<Spells>().playerSpells;
+                Levels.depth++;
+                Levels.bossDead = false;
+                Levels.bossScene = true;
+                SceneManager.LoadScene("BossScene");
+            }
+
         }
     }
     // Update is called once per frame
     void Update()
     {
-        if (Levels.killCount >= killsRequired)
+        if (!Levels.bossScene)
         {
-            isActive = true;
-            mr.material = active;
-            if (boss)
+            if (Levels.killCount >= killsRequired)
             {
-                text.text = "Portal Unstable";
+                isActive = true;
+                mr.material = active;
+                if (boss)
+                {
+                    text.text = "Portal Unstable";
+                }
+                else
+                {
+                    text.text = "Portal Active";
+                }
             }
             else
             {
-                text.text = "Portal Active";
+                text.text = Levels.killCount.ToString() + "/" + killsRequired.ToString();
             }
         }
         else
         {
-            text.text = Levels.killCount.ToString() + "/" + killsRequired.ToString();
+            if (Levels.bossDead)
+            {
+                isActive = true;
+                mr.material = active;
+                text.text = "Portal Active";
+            }
+            else
+            {
+                text.text = "Kill The Boss";
+            }
         }
     }
 }
