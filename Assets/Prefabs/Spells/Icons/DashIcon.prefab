@@ -154,7 +154,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 3
+  m_Text: 1
 --- !u!114 &1632270006324937078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c18a4d2bd1c36ff4e8ef4bb1c374e3d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 3
+  cooldown: 1
 --- !u!1 &1632270006596969593
 GameObject:
   m_ObjectHideFlags: 0

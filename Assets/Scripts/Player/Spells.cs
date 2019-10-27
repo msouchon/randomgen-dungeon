@@ -60,6 +60,8 @@ public class Spells : MonoBehaviour
             }
             spellDict.Add(spell.spell, spell);
         }
+
+        playerSpells = Levels.playerSpells;
     }
 
     void Update()

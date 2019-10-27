@@ -26,6 +26,7 @@ public class PortalScript : MonoBehaviour
     }
     public void NextLevel()
     {
+        Levels.playerSpells = player.GetComponent<Spells>().playerSpells;
         SceneManager.LoadScene(sceneName);
     }
     void OnTriggerEnter(Collider c)

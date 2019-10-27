@@ -8,6 +8,7 @@ public class Levels : MonoBehaviour
 
     public static int killCount;
     public static bool isDead;
+    public static List<Spells.SpellsEnum> playerSpells = new List<Spells.SpellsEnum>();
     void Start()
     {
         killCount = 0;
@@ -18,12 +19,13 @@ public class Levels : MonoBehaviour
     {
         SceneManager.LoadScene("MenuScene");
     }
-    public static void IncrementKillCount(){
+    public static void IncrementKillCount()
+    {
         killCount += 1;
     }
 
     void Update()
     {
-        
+
     }
 }
