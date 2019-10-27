@@ -22,7 +22,7 @@ public class Tutorial : MonoBehaviour
 
     public static state currentState = state.WELCOME;
 
-    private string welcome = "Welcome to {GAME NAME}!\n\nUse WASD to move. Try moving around now!";
+    private string welcome = "Welcome to Dungeon Wizard!\n\nUse WASD to move. Try moving around now!";
     private string shoot = "Press Mouse 1 to shoot, aim with your mouse pointer.\n\nTry aiming at the green enemy and shooting it!";
     private string shoot2 = "Now shoot it again to kill it!";
     private string portal = "Good job!\n\n You have now killed enough enemies to open the portal!\nMove into the portal to continue.";
