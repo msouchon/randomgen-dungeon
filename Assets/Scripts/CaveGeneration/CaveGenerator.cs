@@ -25,11 +25,12 @@ public class CaveGenerator : MonoBehaviour
     public int[,] heightmap;
     private System.Random random;
     private GameObject currPortal;
+    public bool genPortal = true;
 
     void Start()
     {
         random = new System.Random();
-        generateCave(true);
+        generateCave(genPortal);
 
     }
 
