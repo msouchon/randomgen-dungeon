@@ -20,7 +20,7 @@ public class Laser : MonoBehaviour
 
 	IEnumerator ShootLaser() {
 		GameObject e = Instantiate(laserEffect);
-		e.transform.position = transform.position + Vector3.down;
+		e.transform.position = transform.position + Vector3.down/2;
 		e.transform.SetParent(transform);
 		Destroy(e, laserDelay);
 		yield return new WaitForSeconds(laserDelay);
@@ -43,8 +43,9 @@ public class Laser : MonoBehaviour
 			}
 		}
 		LineRenderer lr = g.GetComponent<LineRenderer>();
-		lr.positionCount = 2;
+		lr.positionCount = 3;
 		lr.SetPosition(0, transform.position);
-		lr.SetPosition(1, finalHit.point);
+		lr.SetPosition(1, transform.position + transform.forward);
+		lr.SetPosition(2, finalHit.point);
 	}
 }

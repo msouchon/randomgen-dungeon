@@ -24,6 +24,7 @@ public class CaveGenerator : MonoBehaviour
 
 	private int[,] heightmap;
 	private System.Random random;
+	private GameObject currPortal;
 
 	void Start() {
 		random = new System.Random();
@@ -120,6 +121,7 @@ public class CaveGenerator : MonoBehaviour
 		MeshGenerator mG = GetComponent<MeshGenerator>();
 		clearPosition(xSize/2, ySize/2, 40);
 		
+		if (currPortal != null) Destroy(currPortal);
 		if (placePortal) {
 			int xPos, yPos;
 			if (UnityEngine.Random.value > 0.5) {
@@ -132,6 +134,7 @@ public class CaveGenerator : MonoBehaviour
 			}
 			clearPosition(xPos, yPos, portalSpacing);
 			GameObject g = Instantiate(portal);
+			currPortal = g;
 			g.transform.position = new Vector3(xPos-xSize/2, 1.4f, yPos-ySize/2);
 			g.GetComponent<PortalScript>().killsRequired = killsRequired;
 		}
