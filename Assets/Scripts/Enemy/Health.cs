@@ -53,9 +53,9 @@ public class Health : MonoBehaviour
         }
         Destroy(this.gameObject);
 
-        if (!tutorial)
+        if (!tutorial && !boss)
         {
-            int dropChance = Random.Range(0, 10);
+            int dropChance = Random.Range(0, 7);
             // make a drop
             if (dropChance == 0)
             {
