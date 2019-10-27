@@ -16,10 +16,17 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public void ApplyDamage(float damage) {
+    public void ApplyDamage(float damage)
+    {
         health -= damage;
+
+        if (health <= 0)
+        {
+            Levels.isDead = true;
+            Destroy(this.gameObject);
+        }
     }
 }

@@ -160,7 +160,7 @@ public class CaveGenerator : MonoBehaviour
             clearPosition(xPos, yPos, portalSpacing);
             GameObject g = new GameObject();
 
-            if (Levels.depth < 2)
+            if (Levels.depth < 2 || Levels.bossScene)
             {
                 g = Instantiate(portal);
             }

@@ -10,6 +10,8 @@ public class Levels : MonoBehaviour
     public static bool isDead;
     public static List<Spells.SpellsEnum> playerSpells = new List<Spells.SpellsEnum>();
     public static int depth = 0;
+    public static bool bossScene = false;
+    public static bool bossDead = false;
     void Start()
     {
         killCount = 0;
