@@ -250,6 +250,9 @@ MonoBehaviour:
   - spell: 5
     icon: {fileID: 6818085716969981673, guid: 85052394d0c62574e87db5294004f54c, type: 3}
     drop: {fileID: 6375259909650376757, guid: 6b4d6ec201a3f1149be7806e81e571e1, type: 3}
+  - spell: 6
+    icon: {fileID: 549115805294211136, guid: f08d3fe78de37a0468b032aa8e14ba7b, type: 3}
+    drop: {fileID: 1500168711440729494, guid: e2c45f32ff067584497d5612185cfa59, type: 3}
   playerSpells: 
 --- !u!96 &2836812690132466119
 TrailRenderer:

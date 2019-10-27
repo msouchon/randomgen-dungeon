@@ -11,7 +11,8 @@ public class Spells : MonoBehaviour
         SHOOTLIGHTNING,
         LIGHTNINGBALL,
         INVISIBILITY,
-        BOMB
+        BOMB,
+        LASER
     }
 
     [System.Serializable]
@@ -53,6 +54,9 @@ public class Spells : MonoBehaviour
                 case SpellsEnum.BOMB:
                     spell.script = this.GetComponent<BombPlace>();
                     break;
+                case SpellsEnum.LASER:
+                    spell.script = this.GetComponent<Laser>();
+                    break;
             }
             spellDict.Add(spell.spell, spell);
         }
@@ -79,9 +83,11 @@ public class Spells : MonoBehaviour
         {
             spellDict[SpellsEnum.DASH].script.doAction();
         }
-	      if(Input.GetKey("c")) {
+        if (Input.GetKey("c"))
+        {
             playerSpells = new List<SpellsEnum>();
-            foreach(Spell spell in spells) {
+            foreach (Spell spell in spells)
+            {
                 playerSpells.Add(spell.spell);
             }
         }
