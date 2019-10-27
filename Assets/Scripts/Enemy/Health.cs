@@ -45,13 +45,14 @@ public class Health : MonoBehaviour
 
         if (!tutorial)
         {
-            int dropChance = Random.Range(0, 5);
+            int dropChance = Random.Range(0, 10);
             // make a drop
             if (dropChance == 0)
             {
                 Spells playerSpells = GameObject.Find("Player").GetComponent<Spells>();
                 int spellDrop = Random.Range(0, playerSpells.spells.Count);
-                if (playerSpells.spells[spellDrop].drop)
+                Spells.Spell spell = playerSpells.spells[spellDrop];
+                if (spell.drop && !playerSpells.playerSpells.Contains(spell.spell))
                 {
                     GameObject d = Instantiate(playerSpells.spells[spellDrop].drop, transform.position, Quaternion.Euler(0, 180, 0));
                     d.transform.position -= Vector3.up * 0.9f;

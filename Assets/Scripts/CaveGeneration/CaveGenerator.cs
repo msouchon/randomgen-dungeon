@@ -5,7 +5,7 @@ using System;
 
 public class CaveGenerator : MonoBehaviour
 {
-    public GameObject portal;
+    public GameObject portal, bossPortal;
     public int portalSpacing = 20;
     public int killsRequired = 10;
 
@@ -158,7 +158,29 @@ public class CaveGenerator : MonoBehaviour
                 xPos = (UnityEngine.Random.value > 0.5) ? portalSpacing * 2 : xSize - portalSpacing * 2;
             }
             clearPosition(xPos, yPos, portalSpacing);
-            GameObject g = Instantiate(portal);
+            GameObject g = new GameObject();
+
+            if (Levels.depth < 2)
+            {
+                g = Instantiate(portal);
+            }
+            else if (Levels.depth == 2)
+            {
+                g = Instantiate(bossPortal);
+            }
+            else if (Levels.depth > 2)
+            {
+                int chance = UnityEngine.Random.Range(0, 10);
+                if (chance == 0)
+                {
+                    g = Instantiate(bossPortal);
+                }
+                else
+                {
+                    g = Instantiate(portal);
+                }
+            }
+
             currPortal = g;
             g.transform.position = new Vector3(xPos - xSize / 2, 1.4f, yPos - ySize / 2);
             if (g.GetComponent<PortalScript>())
