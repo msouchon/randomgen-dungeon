@@ -265,10 +265,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   sceneName: MainScene
-  killsRequired: 10
+  killsRequired: 15
   active: {fileID: 2100000, guid: 1259559aef319fd4ebd4f4c6021bcc84, type: 2}
   inactive: {fileID: 2100000, guid: 02bc90ac464d2ef419cc66f1925a8c60, type: 2}
   text: {fileID: 5766676585384210012}
+  boss: 0
 --- !u!1 &9173791803816248428
 GameObject:
   m_ObjectHideFlags: 0
