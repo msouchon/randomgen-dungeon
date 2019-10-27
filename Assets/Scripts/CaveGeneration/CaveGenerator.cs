@@ -136,7 +136,10 @@ public class CaveGenerator : MonoBehaviour
 			GameObject g = Instantiate(portal);
 			currPortal = g;
 			g.transform.position = new Vector3(xPos-xSize/2, 1.4f, yPos-ySize/2);
-			g.GetComponent<PortalScript>().killsRequired = killsRequired;
+			if (g.GetComponent<PortalScript>())
+      {
+          g.GetComponent<PortalScript>().killsRequired = killsRequired;
+      }
 		}
 
 		heightmap = borderize(borderSize, heightmap);

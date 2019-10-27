@@ -16,10 +16,11 @@ public class Tutorial : MonoBehaviour
         DASH,
         DASH2,
         SPELLS,
-        ENEMIES
+        ENEMIES,
+        PORTAL2
     }
 
-    private state currentState = state.WELCOME;
+    public static state currentState = state.WELCOME;
 
     private string welcome = "Welcome to {GAME NAME}!\n\nUse WASD to move. Try moving around now!";
     private string shoot = "Press Mouse 1 to shoot, aim with your mouse pointer.\n\nTry aiming at the green enemy and shooting it!";
@@ -28,14 +29,16 @@ public class Tutorial : MonoBehaviour
     private string dash = "Use Mouse 2 to dash, aim with your mouse pointer.\n\nTry dashing now.";
     private string dash2 = "Dashing can be used for movement and to push enemies and certain spells around.\nWatch out for cases where you could use this.\n\nEnter the portal to continue.";
     private string spells = "Killing enemies will cause certain spells to be dropped.\nWhen you pick up a spell it will be assigned to a key 1 through 5.\n\nTry killing some enemies and pick up the spells.";
-    private string spells2 = "Now go through the portal to continue.";
-    private string enemies = "Some enemies may try and kill you!\nAvoid explosions and bullets and watch out for your health\nTry using your new spells on these enemies!\nYou are now ready to play the game! - Press ESC to exit";
+    private string spells2 = "Press key 1-5 to use these new skills\n\nNow go through the portal to continue.";
+    private string enemies = "Some enemies may try and kill you!\nAvoid explosions and bullets and watch out for your health\nTry using your new spells on these enemies!\nEnter portal to continue.";
+    private string portalText = "In the world portals will be hidden and require exploration to find.\nThey will also require a certain kill count to activate.\n\nTry getting kill count and enter the portal to finish the tutorial!";
 
     public Text Text;
-    public GameObject stillEnemy, EnemySpawner;
+    public GameObject stillEnemy, shootingEnemy, explodingEnemy;
 
     private GameObject stillEnemySpawned;
     private bool spawned;
+    List<GameObject> spawnedEnemies = new List<GameObject>();
 
     void Start()
     {
@@ -124,13 +127,13 @@ public class Tutorial : MonoBehaviour
                     Destroy(obj);
                 }
 
-                GameObject g = Instantiate(stillEnemy, new Vector3(8, 1, 3), Quaternion.identity);
+                GameObject g = Instantiate(stillEnemy, new Vector3(8, 1, 6), Quaternion.identity);
                 g.GetComponent<Health>().tutorialSpell = Spells.SpellsEnum.SHOOTLIGHTNING;
-                g = Instantiate(stillEnemy, new Vector3(8, 1, 1), Quaternion.identity);
+                g = Instantiate(stillEnemy, new Vector3(8, 1, 2), Quaternion.identity);
                 g.GetComponent<Health>().tutorialSpell = Spells.SpellsEnum.LIGHTNINGBALL;
-                g = Instantiate(stillEnemy, new Vector3(8, 1, -1), Quaternion.identity);
+                g = Instantiate(stillEnemy, new Vector3(8, 1, -2), Quaternion.identity);
                 g.GetComponent<Health>().tutorialSpell = Spells.SpellsEnum.INVISIBILITY;
-                g = Instantiate(stillEnemy, new Vector3(8, 1, -3), Quaternion.identity);
+                g = Instantiate(stillEnemy, new Vector3(8, 1, -6), Quaternion.identity);
                 g.GetComponent<Health>().tutorialSpell = Spells.SpellsEnum.BOMB;
                 spawned = true;
             }
@@ -151,12 +154,64 @@ public class Tutorial : MonoBehaviour
             Text.text = enemies;
             if (!spawned)
             {
-                Instantiate(stillEnemy, new Vector3(8, 1, 3), Quaternion.identity);
-                Instantiate(stillEnemy, new Vector3(8, 1, 1), Quaternion.identity);
-                Instantiate(stillEnemy, new Vector3(8, 1, -1), Quaternion.identity);
-                Instantiate(stillEnemy, new Vector3(8, 1, -3), Quaternion.identity);
-                EnemySpawner.SetActive(true);
+                spawnedEnemies.Add(Instantiate(stillEnemy, new Vector3(8, 1, 6), Quaternion.identity));
+                spawnedEnemies.Add(Instantiate(stillEnemy, new Vector3(8, 1, 2), Quaternion.identity));
+                spawnedEnemies.Add(Instantiate(stillEnemy, new Vector3(8, 1, -2), Quaternion.identity));
+                spawnedEnemies.Add(Instantiate(stillEnemy, new Vector3(8, 1, -6), Quaternion.identity));
+                spawnedEnemies.Add(Instantiate(shootingEnemy, new Vector3(12, 1, -2), Quaternion.identity));
+                spawnedEnemies.Add(Instantiate(explodingEnemy, new Vector3(12, 1, 2), Quaternion.identity));
                 spawned = true;
+            }
+            int c = 0;
+            for (int i = 0; i < spawnedEnemies.Count; i++)
+            {
+                if (!spawnedEnemies[i])
+                {
+                    c++;
+                }
+            }
+            if (c == spawnedEnemies.Count)
+            {
+                spawnedEnemies = new List<GameObject>();
+                spawned = false;
+            }
+        }
+
+        if (currentState == state.PORTAL2)
+        {
+            Text.text = portalText;
+            if (!spawned)
+            {
+                GameObject[] objs = GameObject.FindGameObjectsWithTag("Bullet");
+                foreach (GameObject obj in objs)
+                {
+                    Destroy(obj);
+                }
+                objs = GameObject.FindGameObjectsWithTag("Enemy");
+                foreach (GameObject obj in objs)
+                {
+                    Destroy(obj);
+                }
+                spawnedEnemies.Add(Instantiate(stillEnemy, new Vector3(8, 1, 6), Quaternion.identity));
+                spawnedEnemies.Add(Instantiate(stillEnemy, new Vector3(8, 1, 2), Quaternion.identity));
+                spawnedEnemies.Add(Instantiate(stillEnemy, new Vector3(8, 1, -2), Quaternion.identity));
+                spawnedEnemies.Add(Instantiate(stillEnemy, new Vector3(8, 1, -6), Quaternion.identity));
+                spawnedEnemies.Add(Instantiate(shootingEnemy, new Vector3(14, 1, -2), Quaternion.identity));
+                spawnedEnemies.Add(Instantiate(explodingEnemy, new Vector3(14, 1, 2), Quaternion.identity));
+                spawned = true;
+            }
+            int c = 0;
+            for (int i = 0; i < spawnedEnemies.Count; i++)
+            {
+                if (!spawnedEnemies[i])
+                {
+                    c++;
+                }
+            }
+            if (c == spawnedEnemies.Count)
+            {
+                spawnedEnemies = new List<GameObject>();
+                spawned = false;
             }
         }
     }
@@ -176,5 +231,12 @@ public class Tutorial : MonoBehaviour
     {
         currentState = state.ENEMIES;
         spawned = false;
+    }
+
+    public void portal4()
+    {
+        currentState = state.PORTAL2;
+        spawned = false;
+        Levels.killCount = 0;
     }
 }
